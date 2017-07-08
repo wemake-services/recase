@@ -1,16 +1,28 @@
 defmodule Recase.CamelCaseTest do
   use ExUnit.Case
 
-  alias Recase.CamelCase
+  import Recase.CamelCase
 
-  doctest CamelCase
+  doctest Recase.CamelCase
 
   test "should camel case usual text" do
-    assert CamelCase.convert("camel case") == "camelCase"
-    assert CamelCase.convert("camel-case") == "camelCase"
+    assert convert("camel case") == "camelCase"
+    assert convert("camel-case") == "camelCase"
+    assert convert("camel.case") == "camelCase"
+    assert convert("camel_case") == "camelCase"
+    assert convert("CamelCase") == "camelCase"
+    assert convert("camelCase") == "camelCase"
+  end
+
+  test "should not modify extra chars" do
+    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+  end
+
+  test "should return single letter" do
+    assert convert("a") == "a"
   end
 
   test "should return empty string" do
-    assert CamelCase.convert("") == ""
+    assert convert("") == ""
   end
 end

@@ -3,8 +3,11 @@ defmodule Recase.UpperCase do
   Documentation for Recase.
   """
 
+  alias Recase.CamelCase
+
   def convert(""), do: ""
-  def convert(value) when is_binary(value) do
-    "UpperCase"
+  def convert(value) do
+    <<char::binary-size(1), rest::binary>>  = CamelCase.convert(value)
+    String.upcase(char) <> rest
   end
 end

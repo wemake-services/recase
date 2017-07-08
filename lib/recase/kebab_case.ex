@@ -3,8 +3,13 @@ defmodule Recase.KebabCase do
   Documentation for Recase.
   """
 
-  def convert(""), do: ""
-  def convert(value) when is_binary(value) do
-    "kebab-case"
+  alias Recase.SnakeCase
+
+  @sep "-"
+
+  def convert(value) do
+    value
+    |> SnakeCase.convert
+    |> String.replace("_", @sep)
   end
 end
