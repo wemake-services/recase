@@ -1,0 +1,10 @@
+#### joe made this: http://goel.io/joe
+#### elixir ####
+/_build
+/cover
+/deps
+/.fetch
+/doc
+erl_crash.dump
+*.ez
+*.beam
