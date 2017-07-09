@@ -8,6 +8,7 @@ defmodule Recase.SnakeCaseTest do
   test "should snake case usual text" do
     assert convert("snake case") == "snake_case"
     assert convert("snakeCase") == "snake_case"
+    assert convert("Snake-Case") == "snake_case"
     assert convert("Snake_Case") == "snake_case"
     assert convert("SnakeCase") == "snake_case"
     assert convert("Snake.Case") == "snake_case"

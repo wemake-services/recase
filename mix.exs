@@ -30,7 +30,8 @@ defmodule Recase.Mixfile do
      ],
 
      # Dialyzer:
-     dialyzer: [plt_add_deps: :apps_direct, plt_add_apps: [:ecto]]]
+     dialyzer: [plt_add_deps: :apps_direct]
+    ]
   end
 
   def application do
