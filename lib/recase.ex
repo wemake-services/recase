@@ -5,7 +5,15 @@ defmodule Recase do
   This module contains public interface.
   """
 
-  alias Recase.{CamelCase, UpperCase, SnakeCase, KebabCase}
+  alias Recase.{
+    CamelCase,
+    UpperCase,
+    SnakeCase,
+    KebabCase,
+    ConstantCase,
+    PathCase,
+    DotCase
+  }
 
   @doc """
   Converts string to UpperCase aka PascalCase.
@@ -62,4 +70,48 @@ defmodule Recase do
   """
   @spec to_kebab(String.t) :: String.t
   def to_kebab(value), do: KebabCase.convert(value)
+
+  @doc """
+  Converts string to CONSTANT_CASE.
+
+  ## Examples
+
+      iex> Recase.to_constant("SomeValue")
+      "SOME_VALUE"
+
+      iex> Recase.to_constant("some value")
+      "SOME_VALUE"
+  """
+  @spec to_constant(String.t) :: String.t
+  def to_constant(value), do: ConstantCase.convert(value)
+
+  @doc ~S"""
+  Converts string to path/case.
+
+  ## Examples
+
+      iex> Recase.to_path("SomeValue")
+      "Some/Value"
+
+      iex> Recase.to_path("some value", "\\")
+      "some\\value"
+  """
+  @spec to_path(String.t, String.t) :: String.t
+  def to_path(value, separator), do: PathCase.convert(value, separator)
+  @spec to_path(String.t) :: String.t
+  def to_path(value), do: PathCase.convert(value)
+
+  @doc """
+  Converts string to dot.case
+
+  ## Examples
+
+      iex> Recase.to_dot("SomeValue")
+      "some.value"
+
+      iex> Recase.to_dot("some value")
+      "some.value"
+  """
+  @spec to_dot(String.t) :: String.t
+  def to_dot(value), do: DotCase.convert(value)
 end

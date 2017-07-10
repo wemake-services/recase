@@ -42,7 +42,7 @@ Recase.to_camel("Some Value")
 Recase.to_snake("someValue")
 # => "some_value"
 
-Recase.to_camel("Some Value")
+Recase.to_snake("Some Value")
 # => "some_value"
 ```
 
