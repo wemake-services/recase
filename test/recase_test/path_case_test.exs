@@ -18,6 +18,11 @@ defmodule Recase.PathCaseTest do
     assert convert("path case", "\\") == "path\\case"
   end
 
+  test "should preserve path chars" do
+    assert convert("/path case") == "/path/case"
+    assert convert("C:\\path case", "\\") == "C:\\path\\case"
+  end
+
   test "should not modify extra chars" do
     assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
   end
