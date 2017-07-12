@@ -12,6 +12,8 @@ defmodule Recase.CamelCaseTest do
     assert convert("camel_case") == "camelCase"
     assert convert("CamelCase") == "camelCase"
     assert convert("camelCase") == "camelCase"
+    assert convert("CAMelCase") == "camelCase"
+    assert convert("camel-casE") == "camelCase"
   end
 
   test "should not modify extra chars" do
