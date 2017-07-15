@@ -16,20 +16,20 @@ One can ask: "Why should I use `recase` when I can use built-in `Macro` module?"
 
 ```elixir
 def deps do
-  [{:recase, "~> 0.1"}]
+  [{:recase, "~> 0.2"}]
 end
 ```
 
 
 ## Usage
 
-### Upper
+### Pascal
 
-Upper (or Pascal) case uses mixed case with lower and upper cased characters. Separates words from each other with the upper case letters. Starts with upper case letter.
+Pascal (or Upper) case uses mixed case with lower and upper cased characters. Separates words from each other with the upper case letters. Starts with upper case letter.
 
 ```elixir
-Recase.to_upper("some-value") # => "SomeValue"
-Recase.to_upper("Some value") # => "SomeValue"
+Recase.to_pascal("some-value") # => "SomeValue"
+Recase.to_pascal("Some value") # => "SomeValue"
 ```
 
 ### Camel
@@ -86,6 +86,12 @@ Recase.to_path("SomeValue") # => "Some/Value"
 Recase.to_path("some value", "\\") # => "some\\value"
 ```
 
+
+## Changelog
+
+Full changelog is available [here](https://github.com/sobolevn/recase/blob/master/CHANGELOG.md).
+
+
 ## License
 
-MIT. See [LICENSE.md](/LICENSE.md) for more details.
+MIT. See [LICENSE.md](https://github.com/sobolevn/recase/blob/master/LICENSE.md) for more details.

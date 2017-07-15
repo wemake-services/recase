@@ -14,8 +14,8 @@ defmodule RecaseTest do
     assert Recase.to_kebab("some value") == "some-value"
   end
 
-  test "should convert to UpperCase" do
-    assert Recase.to_upper("some value") == "SomeValue"
+  test "should convert to PascalCase" do
+    assert Recase.to_pascal("some value") == "SomeValue"
   end
 
   test "should convert to CONSTANT_CASE" do

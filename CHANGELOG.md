@@ -1,5 +1,23 @@
 # Changelog
 
+## Version 0.2.0
+
+This version brings just one, but braking change. As it was discussed `to_upper` is a misleading name for a function. It is not clear what this function does. Since traditionally `uppercase` is just all uppercased letters. And it has nothing to do with `PascalCase`.
+
+### Braking changes
+
+- `UpperCase` renamed to `PascalCase` ([#2](https://github.com/sobolevn/recase/issues/2))
+- `Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/sobolevn/recase/issues/2))
+
+### Tests
+
+- `upper_case_test.exs` renamed to `pascal_case_test.exs`
+
+### Documentation
+
+- Made changes to reflect `Pascal` and `Upper` case issue
+
+
 ## Version 0.1.1
 
 ### Improvements

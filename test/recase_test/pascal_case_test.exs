@@ -1,11 +1,11 @@
-defmodule Recase.UpperCaseTest do
+defmodule Recase.PascalCaseTest do
   use ExUnit.Case
 
-  import Recase.UpperCase
+  import Recase.PascalCase
 
-  doctest Recase.UpperCase
+  doctest Recase.PascalCase
 
-  test "should upper case usual text" do
+  test "should pascal case usual text" do
     assert convert("upper case") == "UpperCase"
     assert convert("upper-case") == "UpperCase"
     assert convert("upper.case") == "UpperCase"

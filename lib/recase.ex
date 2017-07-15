@@ -7,7 +7,7 @@ defmodule Recase do
 
   alias Recase.{
     CamelCase,
-    UpperCase,
+    PascalCase,
     SnakeCase,
     KebabCase,
     ConstantCase,
@@ -16,18 +16,18 @@ defmodule Recase do
   }
 
   @doc """
-  Converts string to UpperCase aka PascalCase.
+  Converts string to PascalCase (aka UpperCase).
 
   ## Examples
 
-      iex> Recase.to_upper("some-value")
+      iex> Recase.to_pascal("some-value")
       "SomeValue"
 
-      iex> Recase.to_upper("some value")
+      iex> Recase.to_pascal("some value")
       "SomeValue"
   """
-  @spec to_upper(String.t) :: String.t
-  def to_upper(value), do: UpperCase.convert(value)
+  @spec to_pascal(String.t) :: String.t
+  def to_pascal(value), do: PascalCase.convert(value)
 
   @doc """
   Converts string to camelCase.
