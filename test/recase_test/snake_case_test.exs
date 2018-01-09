@@ -13,10 +13,9 @@ defmodule Recase.SnakeCaseTest do
     assert convert("SnakeCase") == "snake_case"
     assert convert("Snake.Case") == "snake_case"
     assert convert("SNAKE_CASE") == "snake_case"
-  end
-
-  test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("--snake-case--") == "snake_case"
+    assert convert("snake#case") == "snake_case"
+    assert convert("snake?!case") == "snake_case"
   end
 
   test "should return single letter" do

@@ -13,10 +13,9 @@ defmodule Recase.ConstantCaseTest do
     assert convert("constant_Case") == expected
     assert convert("constant.Case") == expected
     assert convert("ConstantCase") == expected
-  end
-
-  test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("--constant-case--") == expected
+    assert convert("constant#case") == expected
+    assert convert("constant?!case") == expected
   end
 
   test "should return single letter" do

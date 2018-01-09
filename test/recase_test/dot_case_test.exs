@@ -13,10 +13,9 @@ defmodule Recase.DotCaseTest do
     assert convert("dotCase") == expected
     assert convert("dot.Case") == expected
     assert convert("dot-case") == expected
-  end
-
-  test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("--dot-case--") == expected
+    assert convert("dot#case") == expected
+    assert convert("dot?!case") == expected
   end
 
   test "should return single letter" do
