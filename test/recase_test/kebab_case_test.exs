@@ -12,10 +12,9 @@ defmodule Recase.KebabCaseTest do
     assert convert("KebabCase") == "kebab-case"
     assert convert("Kebab.Case") == "kebab-case"
     assert convert("kebab-case") == "kebab-case"
-  end
-
-  test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("--kebab-case--") == "kebab-case"
+    assert convert("kebab#case") == "kebab-case"
+    assert convert("kebab?!case") == "kebab-case"
   end
 
   test "should return single letter" do

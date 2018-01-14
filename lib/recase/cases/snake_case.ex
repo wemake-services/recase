@@ -16,10 +16,15 @@ defmodule Recase.SnakeCase do
   def convert(""), do: ""
   def convert(value) do
     value
-    |> String.trim
-    |> replace(~r/[\s\.\-]/, @sep)
-    |> replace(~r/([a-z\d])([A-Z])/, "\\1#{@sep}\\2")
-    |> replace(~r/([A-Z]+)([A-Z][a-z\d]+)/, "\\1#{@sep}\\2")
+    |> String.split(~r/[^a-zA-Z0-9]+/)
+    |> Enum.map(fn(word) ->
+      word
+      |> replace(~r/[\s\.\-]/, @sep)
+      |> replace(~r/([a-z\d])([A-Z])/, "\\1#{@sep}\\2")
+      |> replace(~r/([A-Z]+)([A-Z][a-z\d]+)/, "\\1#{@sep}\\2")
+      end)
+    |> Enum.join(@sep)
     |> String.downcase
+    |> String.trim(@sep)
   end
 end
