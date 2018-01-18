@@ -1,5 +1,13 @@
 # Changelog
 
+## Version 0.3.0
+
+### Breaking changes
+
+- `snake_case` now removes punctuation, see [#5](https://github.com/sobolevn/recase/issues/5)
+- Minimal `elixir` version is now `1.5`
+
+
 ## Version 0.2.0
 
 This version brings just one, but braking change. As it was discussed `to_upper` is a misleading name for a function. It is not clear what this function does. Since traditionally `uppercase` is just all uppercased letters. And it has nothing to do with `PascalCase`.
