@@ -1,13 +1,13 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.3.0"
   @url "https://github.com/sobolevn/recase"
 
   def project do
     [app: :recase,
      version: @version,
-     elixir: "~> 1.4",
+     elixir: "~> 1.5",
      deps: deps(),
 
      # Hex:

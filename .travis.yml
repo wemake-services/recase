@@ -3,11 +3,10 @@ language: elixir
 sudo: false
 
 elixir:
-  - 1.4
+  - 1.5
 
 otp_release:
-  - 18.2
-  - 19.3
+  - 20.0
 
 env: MIX_ENV=test
 
