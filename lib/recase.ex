@@ -7,12 +7,12 @@ defmodule Recase do
 
   alias Recase.{
     CamelCase,
-    PascalCase,
-    SnakeCase,
-    KebabCase,
     ConstantCase,
+    DotCase,
+    KebabCase,
+    PascalCase,
     PathCase,
-    DotCase
+    SnakeCase
   }
 
   @doc """
