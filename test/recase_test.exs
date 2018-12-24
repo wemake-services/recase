@@ -30,4 +30,8 @@ defmodule RecaseTest do
   test "should convert to dot.case" do
     assert Recase.to_dot("Some Value") == "some.value"
   end
+
+  test "should convert to Sentence case" do
+    assert Recase.to_sentence("Some Value") == "Some value"
+  end
 end
