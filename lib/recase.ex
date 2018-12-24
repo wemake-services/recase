@@ -12,6 +12,7 @@ defmodule Recase do
     KebabCase,
     PascalCase,
     PathCase,
+    SentenceCase,
     SnakeCase
   }
 
@@ -114,4 +115,18 @@ defmodule Recase do
   """
   @spec to_dot(String.t) :: String.t
   def to_dot(value), do: DotCase.convert(value)
+
+  @doc """
+  Converts string to Sentence case
+
+  ## Examples
+
+      iex> Recase.to_sentence("SomeValue")
+      "Some value"
+
+      iex> Recase.to_sentence("some value")
+      "Some value"
+  """
+  @spec to_sentence(String.t) :: String.t
+  def to_sentence(value), do: SentenceCase.convert(value)
 end
