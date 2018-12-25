@@ -1,7 +1,7 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.4.0"
   @url "https://github.com/sobolevn/recase"
 
   def project do
@@ -40,8 +40,7 @@ defmodule Recase.Mixfile do
   end
 
   defp deps do
-    [# Testing:
-     {:excoveralls, "~> 0.5", only: :test},
+    [{:excoveralls, "~> 0.5", only: :test},
      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
 

@@ -18,7 +18,7 @@ One can ask: "Why should I use `recase` when I can use built-in `Macro` module?"
 
 ```elixir
 def deps do
-  [{:recase, "~> 0.2"}]
+  [{:recase, "~> 0.4"}]
 end
 ```
 
@@ -86,6 +86,16 @@ Path case preserves case, you can also provide a separator as the second argumen
 ```elixir
 Recase.to_path("SomeValue") # => "Some/Value"
 Recase.to_path("some value", "\\") # => "some\\value"
+```
+
+### Sentence
+
+Sentence case uses the same rules as regular sentence.
+First letter is uppercase all others letters are lowercase separated by spaces.
+
+```elixir
+Recase.to_sentence("SomeValue") # => "Some value"
+Recase.to_sentence("some value") # => "Some value"
 ```
 
 

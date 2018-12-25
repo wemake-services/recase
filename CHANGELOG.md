@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.4.0
+
+### Features
+
+- Adds `sentence_case`, see [#38](https://github.com/sobolevn/recase/pull/38)
+
+### Misc
+
+- Package version updates
+
+
 ## Version 0.3.0
 
 ### Breaking changes
