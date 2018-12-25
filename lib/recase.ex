@@ -13,7 +13,8 @@ defmodule Recase do
     PascalCase,
     PathCase,
     SentenceCase,
-    SnakeCase
+    SnakeCase,
+    TitleCase
   }
 
   @doc """
@@ -129,4 +130,18 @@ defmodule Recase do
   """
   @spec to_sentence(String.t) :: String.t
   def to_sentence(value), do: SentenceCase.convert(value)
+
+  @doc """
+  Converts string to Title Case
+
+  ## Examples
+
+      iex> Recase.to_title("SomeValue")
+      "Some Value"
+
+      iex> Recase.to_title("some value")
+      "Some Value"
+  """
+  @spec to_title(String.t) :: String.t
+  def to_title(value), do: TitleCase.convert(value)
 end

@@ -34,4 +34,8 @@ defmodule RecaseTest do
   test "should convert to Sentence case" do
     assert Recase.to_sentence("Some Value") == "Some value"
   end
+
+  test "should convert to Title Case" do
+    assert Recase.to_title("Some Value") == "Some Value"
+  end
 end
