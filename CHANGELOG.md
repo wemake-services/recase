@@ -5,6 +5,7 @@
 ### Features
 
 - Adds `sentence_case`, see [#38](https://github.com/sobolevn/recase/pull/38)
+- Adds `title_case`, see [#38](https://github.com/sobolevn/recase/pull/39)
 
 ### Misc
 

@@ -98,6 +98,15 @@ Recase.to_sentence("SomeValue") # => "Some value"
 Recase.to_sentence("some value") # => "Some value"
 ```
 
+### Title
+
+Title case applies a "Title Style" to all words in a sentence.
+
+
+```elixir
+Recase.to_title("some-value") # => "Some Value"
+Recase.to_title("some value") # => "Some Value"
+```
 
 ## Changelog
 
