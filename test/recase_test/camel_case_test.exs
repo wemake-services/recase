@@ -13,11 +13,11 @@ defmodule Recase.CamelCaseTest do
     assert convert("CamelCase") == "camelCase"
     assert convert("camelCase") == "camelCase"
     assert convert("CAMelCase") == "camelCase"
-    assert convert("camel-casE") == "camelCase"
+    assert convert("camel-casE") == "camelCasE"
   end
 
   test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("!#$%^&*(){}[]~`'\"") == "$%^&*(){}[]~`'\""
   end
 
   test "should return single letter" do
