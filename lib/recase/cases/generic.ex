@@ -12,8 +12,10 @@ defmodule Recase.Generic do
                    list
 
                  :symbol ->
-                   [all, down, up] = Enum.map([32..127, ?a..?z, ?A..?Z], &Enum.to_list/1)
-                   all -- (down ++ up)
+                   [all, digits, down, up] =
+                     Enum.map([32..127, ?0..?9, ?a..?z, ?A..?Z], &Enum.to_list/1)
+
+                   all -- (digits ++ down ++ up)
                end)
 
   @doc """
