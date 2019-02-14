@@ -4,6 +4,11 @@ defmodule Recase.PascalCase do
 
   This module should not be used directly.
 
+  ## Examples
+
+      iex> Recase.to_pascal "foo_barBaz-λambdaΛambda-привет-Мир"
+      "FooBarBazΛambdaΛambdaПриветМир"
+
   Read about `PascalCase` here:
   https://en.wikipedia.org/wiki/PascalCase
 
@@ -21,12 +26,9 @@ defmodule Recase.PascalCase do
   For other details see: https://github.com/sobolevn/recase/issues/2
   """
 
-  alias Recase.CamelCase
+  import Recase.Generic, only: [rejoin: 2]
 
-  @spec convert(String.t) :: String.t
-  def convert(""), do: ""
-  def convert(value) do
-    <<char::binary-size(1), rest::binary>> = CamelCase.convert(value)
-    String.upcase(char) <> rest
-  end
+  @spec convert(String.t()) :: String.t()
+  def convert(value) when is_binary(value),
+    do: rejoin(value, separator: "", case: :title)
 end

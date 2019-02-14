@@ -4,27 +4,22 @@ defmodule Recase.SnakeCase do
 
   This module should not be used directly.
 
+  ## Examples
+
+      iex> Recase.to_snake "foo_barBaz-λambdaΛambda-привет-Мир"
+      "foo_bar_baz_λambda_λambda_привет_мир"
+      iex> Recase.underscore "foo_barBaz-λambdaΛambda-привет-Мир"
+      "foo_bar_baz_λambda_λambda_привет_мир"
+
   Read about `snake_case` here:
   https://en.wikipedia.org/wiki/Snake_case
   """
 
-  import Recase.Replace
+  import Recase.Generic, only: [rejoin: 2]
 
   @sep "_"
 
-  @spec convert(String.t) :: String.t
-  def convert(""), do: ""
-  def convert(value) do
-    value
-    |> String.split(~r/[^a-zA-Z0-9]+/)
-    |> Enum.map(fn(word) ->
-      word
-      |> replace(~r/[\s\.\-]/, @sep)
-      |> replace(~r/([a-z\d])([A-Z])/, "\\1#{@sep}\\2")
-      |> replace(~r/([A-Z]+)([A-Z][a-z\d]+)/, "\\1#{@sep}\\2")
-      end)
-    |> Enum.join(@sep)
-    |> String.downcase
-    |> String.trim(@sep)
-  end
+  @spec convert(String.t()) :: String.t()
+  def convert(value) when is_binary(value),
+    do: rejoin(value, separator: @sep, case: :down)
 end

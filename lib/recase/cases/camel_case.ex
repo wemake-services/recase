@@ -4,20 +4,22 @@ defmodule Recase.CamelCase do
 
   This module should not be used directly.
 
+  ## Examples
+
+      iex> Recase.to_camel "foo_barBaz-λambdaΛambda-привет-Мир"
+      "fooBarBazΛambdaΛambdaПриветМир"
+
   Read about `camelCase` here:
   https://en.wikipedia.org/wiki/Camel_case
   """
 
-  import Recase.Replace
+  import Recase.Generic, only: [rejoin: 2]
 
-  @spec convert(String.t) :: String.t
+  @spec convert(String.t()) :: String.t()
   def convert(""), do: ""
-  def convert(value) do
-    value
-    |> String.trim
-    |> replace(~r/^[_\.\-\s]+/, "")
-    |> replace(~r/([a-zA-Z]+)([A-Z][a-z\d]+)/, "\\1-\\2")
-    |> String.downcase
-    |> replace(~r/[_\.\-\s]+(\w|$)/, fn(_, x) -> String.upcase(x) end)
+
+  def convert(value) when is_binary(value) do
+    with <<char::utf8, rest::binary>> <- rejoin(value, separator: "", case: :title),
+         do: String.downcase(<<char::utf8>>) <> rest
   end
 end

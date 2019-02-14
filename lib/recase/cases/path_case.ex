@@ -8,20 +8,18 @@ defmodule Recase.PathCase do
   but inserts path separator to appropriate places.
 
   By default uses `/` as a path separator.
+
+  ## Examples
+
+      iex> Recase.to_path "foo_barBaz-λambdaΛambda-привет-Мир"
+      "foo/bar/Baz/λambda/Λambda/привет/Мир"
   """
 
-  import Recase.Replace
+  import Recase.Generic, only: [rejoin: 2]
 
   @sep "/"
 
-  @spec convert(String.t) :: String.t
-  def convert(value, separator \\ @sep)
-  def convert("", _), do: ""
-  def convert(value, separator) do
-    value
-    |> String.trim
-    |> replace(~r/[\s\.\-_]/, separator)
-    |> replace(~r/([a-z\d])([A-Z])/, "\\1#{separator}\\2")
-    |> replace(~r/([A-Z]+)([A-Z][a-z\d]+)/, "\\1#{separator}\\2")
-  end
+  @spec convert(String.t(), String.t()) :: String.t()
+  def convert(value, separator \\ @sep) when is_binary(value),
+    do: rejoin(value, separator: separator, case: :none)
 end
