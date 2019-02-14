@@ -5,7 +5,7 @@ defmodule Recase.Generic do
   This module should not be used directly.
   """
 
-  @splitters Application.get_env(:recase, :delimiters, :symbol)
+  @splitters Application.get_env(:recase, :delimiters, [?\s, ?\n, ?\t, ?_, ?., ?-, ?#, ??, ?!])
 
   @delimiters (case @splitters do
                  list when is_list(list) ->

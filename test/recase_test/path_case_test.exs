@@ -24,7 +24,7 @@ defmodule Recase.PathCaseTest do
   end
 
   test "should not modify extra chars" do
-    assert convert("!#$%^&*(){}[]~`'\"") == "!#$%^&*(){}[]~`'\""
+    assert convert("!#$%^&*(){}[]~`'\"") == "$%^&*(){}[]~`'\""
   end
 
   test "should return single letter" do

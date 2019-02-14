@@ -20,6 +20,11 @@ defmodule Recase.PathCase do
   @sep "/"
 
   @spec convert(String.t(), String.t()) :: String.t()
-  def convert(value, separator \\ @sep) when is_binary(value),
+  def convert(value, separator \\ @sep)
+
+  def convert(<<separator::binary-size(1), rest::binary>>, separator),
+    do: separator <> convert(rest, separator)
+
+  def convert(value, separator) when is_binary(value),
     do: rejoin(value, separator: separator, case: :none)
 end
