@@ -22,6 +22,11 @@ defmodule Recase.SnakeCaseTest do
     assert convert("a") == "a"
   end
 
+  test "should return phrases with more than 2 words" do
+    assert convert("ThreeSeparateWords") == "three_separate_words"
+    assert convert("MoreThanThreeWords") == "more_than_three_words"
+  end
+
   test "should return empty string" do
     assert convert("") == ""
   end

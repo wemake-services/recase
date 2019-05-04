@@ -17,6 +17,15 @@ defmodule Recase.SentenceCaseTest do
     assert convert("sentence?!case") == "Sentence case"
   end
 
+  test "should return single letter" do
+    assert convert("a") == "A"
+  end
+
+  test "should return phrases with more than 2 words" do
+    assert convert("ThreeSeparateWords") == "Three separate words"
+    assert convert("MoreThanThreeWords") == "More than three words"
+  end
+
   test "should return empty string" do
     assert convert("") == ""
   end

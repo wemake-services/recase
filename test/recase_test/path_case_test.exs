@@ -31,6 +31,11 @@ defmodule Recase.PathCaseTest do
     assert convert("a") == "a"
   end
 
+  test "should return phrases with more than 2 words" do
+    assert convert("ThreeSeparateWords") == "Three/Separate/Words"
+    assert convert("MoreThanThreeWords") == "More/Than/Three/Words"
+  end
+
   test "should return empty string" do
     assert convert("") == ""
   end

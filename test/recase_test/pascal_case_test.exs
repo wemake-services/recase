@@ -22,6 +22,11 @@ defmodule Recase.PascalCaseTest do
     assert convert("a") == "A"
   end
 
+  test "should return phrases with more than 2 words" do
+    assert convert("ThreeSeparateWords") == "ThreeSeparateWords"
+    assert convert("MoreThanThreeWords") == "MoreThanThreeWords"
+  end
+
   test "should return empty string" do
     assert convert("") == ""
   end
