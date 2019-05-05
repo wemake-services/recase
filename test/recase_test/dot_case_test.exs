@@ -22,6 +22,11 @@ defmodule Recase.DotCaseTest do
     assert convert("a") == "a"
   end
 
+  test "should return phrases with more than 2 words" do
+    assert convert("ThreeSeparateWords") == "three.separate.words"
+    assert convert("MoreThanThreeWords") == "more.than.three.words"
+  end
+
   test "should return empty string" do
     assert convert("") == ""
   end
