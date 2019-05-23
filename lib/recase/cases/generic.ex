@@ -5,6 +5,8 @@ defmodule Recase.Generic do
   This module should not be used directly.
   """
 
+  import Recase.Guards
+
   @splitters Application.get_env(:recase, :delimiters, [?\s, ?\n, ?\t, ?_, ?., ?-, ?#, ??, ?!])
 
   @delimiters (case @splitters do
@@ -87,43 +89,10 @@ defmodule Recase.Generic do
       do: do_split(rest, {"", [curr | acc]})
   end)
 
-  Enum.each(?A..?Z, fn char ->
-    defp do_split(<<unquote(char), rest::binary>>, {"", acc}),
-      do: do_split(rest, {<<unquote(char)::utf8>>, acc})
+  defp do_split(<<c1::utf8, c2::utf8, rest::binary>>, {curr, acc})
+       when is_uppercase(<<c2::utf8>>) and not is_uppercase(<<c1::utf8>>),
+       do: do_split(rest, {<<c2::utf8>>, [curr <> <<c1::utf8>> | acc]})
 
-    defp do_split(<<unquote(char), rest::binary>>, {curr, acc}) do
-      <<c::utf8, _::binary>> = String.reverse(curr)
-
-      if c in ?A..?Z do
-        do_split(rest, {curr <> <<unquote(char)::utf8>>, acc})
-      else
-        do_split(rest, {<<unquote(char)::utf8>>, [curr | acc]})
-      end
-    end
-  end)
-
-  [32..64, 91..127]
-  |> Enum.map(&Enum.to_list/1)
-  |> Enum.reduce(&Kernel.++/2)
-  |> Kernel.--(@delimiters)
-  |> Enum.each(fn char ->
-    defp do_split(<<unquote(char)::utf8, rest::binary>>, {"", acc}),
-      do: do_split(rest, {<<unquote(char)::utf8>>, acc})
-
-    defp do_split(<<unquote(char), rest::binary>>, {curr, acc}),
-      do: do_split(rest, {curr <> <<unquote(char)::utf8>>, acc})
-  end)
-
-  defp do_split(<<char::utf8, rest::binary>>, {"", acc}),
-    do: do_split(rest, {<<char::utf8>>, acc})
-
-  @upcase ~r/(?<!\p{Lu})\p{Lu}/u
-
-  defp do_split(<<char::utf8, rest::binary>>, {curr, acc}) do
-    if Regex.match?(@upcase, <<char::utf8>>) do
-      do_split(rest, {<<char::utf8>>, [curr | acc]})
-    else
-      do_split(rest, {curr <> <<char::utf8>>, acc})
-    end
-  end
+  defp do_split(<<char::utf8, rest::binary>>, {curr, acc}),
+    do: do_split(rest, {curr <> <<char::utf8>>, acc})
 end
