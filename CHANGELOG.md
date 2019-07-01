@@ -10,6 +10,7 @@
 
 ### Misc
 
+- Bumped minimal `elixir` version to `1.6` due to `mix format`
 - Package version updates
 - New elixir versions support in travis
 - Adds `elixir1.9` support
