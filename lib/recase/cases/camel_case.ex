@@ -19,7 +19,8 @@ defmodule Recase.CamelCase do
   def convert(""), do: ""
 
   def convert(value) when is_binary(value) do
-    with <<char::utf8, rest::binary>> <- rejoin(value, separator: "", case: :title),
+    with <<char::utf8, rest::binary>> <-
+           rejoin(value, separator: "", case: :title),
          do: String.downcase(<<char::utf8>>) <> rest
   end
 end

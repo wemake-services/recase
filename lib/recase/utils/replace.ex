@@ -13,7 +13,7 @@ defmodule Recase.Replace do
   This function accepts `value` as the first argument and
   then passes it to `Regex.replace/3` as the second one.
   """
-  @spec replace(String.t, Regex.t, String.t) :: String.t
+  @spec replace(String.t(), Regex.t(), String.t()) :: String.t()
   def replace(value, regex, new_value) do
     Regex.replace(regex, value, new_value)
   end

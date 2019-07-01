@@ -1,11 +1,26 @@
 # Changelog
 
+
+## Version 0.5.0
+
+### Features
+
+- Improves performance, see [#46](https://github.com/sobolevn/recase/pull/46)
+- Adds `title_case`, see [#38](https://github.com/sobolevn/recase/pull/39)
+
+### Misc
+
+- Package version updates
+- New elixir versions support in travis
+- Adds `elixir1.9` support
+- Adds `mix format`
+
+
 ## Version 0.4.0
 
 ### Features
 
 - Adds `sentence_case`, see [#38](https://github.com/sobolevn/recase/pull/38)
-- Adds `title_case`, see [#38](https://github.com/sobolevn/recase/pull/39)
 
 ### Misc
 

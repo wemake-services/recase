@@ -19,7 +19,8 @@ defmodule Recase.SentenceCase do
 
   @spec convert(String.t()) :: String.t()
   def convert(value) when is_binary(value) do
-    with <<char::utf8, rest::binary>> <- rejoin(value, separator: @sep, case: :down),
+    with <<char::utf8, rest::binary>> <-
+           rejoin(value, separator: @sep, case: :down),
          do: String.upcase(<<char::utf8>>) <> rest
   end
 end

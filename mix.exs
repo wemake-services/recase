@@ -1,36 +1,36 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.4.0"
+  @version "0.5.0"
   @url "https://github.com/sobolevn/recase"
 
   def project do
-    [app: :recase,
-     version: @version,
-     elixir: "~> 1.5",
-     deps: deps(),
+    [
+      app: :recase,
+      version: @version,
+      elixir: "~> 1.5",
+      deps: deps(),
 
-     # Hex:
-     docs: docs(),
-     description: description(),
-     package: package(),
-     source_url: @url,
-     homepage_url: @url,
-
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
+      # Hex:
+      docs: docs(),
+      description: description(),
+      package: package(),
+      source_url: @url,
+      homepage_url: @url,
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
 
       # Test coverage:
-     test_coverage: [tool: ExCoveralls],
-     preferred_cli_env: [
-       coveralls: :test,
-       "coveralls.detail": :test,
-       "coveralls.post": :test,
-       "coveralls.html": :test,
-     ],
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ],
 
-     # Dialyzer:
-     dialyzer: [plt_add_deps: :apps_direct]
+      # Dialyzer:
+      dialyzer: [plt_add_deps: :apps_direct]
     ]
   end
 
@@ -40,12 +40,14 @@ defmodule Recase.Mixfile do
   end
 
   defp deps do
-    [{:excoveralls, "~> 0.5", only: :test},
-     {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
-     {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+    [
+      {:excoveralls, "~> 0.5", only: :test},
+      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
 
-     # Documentation:
-     {:ex_doc, "~> 0.20.0", only: :dev, runtime: false}]
+      # Documentation:
+      {:ex_doc, "~> 0.20.0", only: :dev, runtime: false}
+    ]
   end
 
   defp description do
@@ -57,9 +59,11 @@ defmodule Recase.Mixfile do
   end
 
   defp package do
-    [maintainers: ["Nikita Sobolev"],
-     licenses: ["MIT"],
-     links: %{"GitHub" => @url},
-     files: ~w(mix.exs README.md lib)]
+    [
+      maintainers: ["Nikita Sobolev"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @url},
+      files: ~w(mix.exs README.md lib)
+    ]
   end
 end

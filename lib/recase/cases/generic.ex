@@ -5,7 +5,17 @@ defmodule Recase.Generic do
   This module should not be used directly.
   """
 
-  @splitters Application.get_env(:recase, :delimiters, [?\s, ?\n, ?\t, ?_, ?., ?-, ?#, ??, ?!])
+  @splitters Application.get_env(:recase, :delimiters, [
+               ?\s,
+               ?\n,
+               ?\t,
+               ?_,
+               ?.,
+               ?-,
+               ?#,
+               ??,
+               ?!
+             ])
 
   @delimiters (case @splitters do
                  list when is_list(list) ->
@@ -13,7 +23,10 @@ defmodule Recase.Generic do
 
                  :symbol ->
                    [all, digits, down, up] =
-                     Enum.map([32..127, ?0..?9, ?a..?z, ?A..?Z], &Enum.to_list/1)
+                     Enum.map(
+                       [32..127, ?0..?9, ?a..?z, ?A..?Z],
+                       &Enum.to_list/1
+                     )
 
                    all -- (digits ++ down ++ up)
                end)

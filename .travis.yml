@@ -4,15 +4,27 @@ sudo: false
 
 elixir:
   - 1.5
+  - 1.6
+  - 1.7
+  - 1.8
+  - 1.9
 
 otp_release:
+  - 19.3
   - 20.0
+  - 21.0
+
+matrix:
+  exclude:
+    - elixir: 1.5
+      otp_release: 21.0
 
 env: MIX_ENV=test
 
 script:
-  - mix coveralls.travis
+  - mix format --check-formatted
   - mix credo --strict
+  - mix coveralls.travis
 
 notifications:
   email: false
