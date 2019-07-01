@@ -18,7 +18,7 @@ One can ask: "Why should I use `recase` when I can use built-in `Macro` module?"
 
 ```elixir
 def deps do
-  [{:recase, "~> 0.4"}]
+  [{:recase, "~> 0.5"}]
 end
 ```
 
