@@ -1,6 +1,6 @@
 defmodule Recase.Enumerable do
   @moduledoc """
-  Helper module to convert enumerable keys recursively.
+  Helper module to convert enumerable keys.
   """
 
   @doc """

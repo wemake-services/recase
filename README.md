@@ -110,12 +110,12 @@ Recase.to_title("some value") # => "Some Value"
 
 ### Enumerable
 
-Enumerable applies convert on keys of a map
+You can convert all keys in an enumerable with:
 
 ```elixir
-Recase.Enumerable.convert_keys(%{"some-value" => "value"}, &Recase.to_pascal/1) # => %{"SomeValue" => "value"}
-Recase.Enumerable.convert_keys(%{"some-value" => %{"some value" => "value"}}, &Recase.to_pascal/1) # => %{"SomeValue" => %{"SomeValue" => "value"}}
-Recase.Enumerable.convert_keys([%{"some-value" => "value"}], &Recase.to_pascal/1) # => [%{"SomeValue" => "value"}]
+Recase.Enumerable.convert_keys(%{"snakeCase" => "value"}, &Recase.to_snake/1) # => %{"snake_case" => "value"}
+Recase.Enumerable.convert_keys(%{"snakeCase" => %{"SnakeCase" => "value"}}, &Recase.to_snake/1) # => %{"snake_case" => %{"snake_case" => "value"}}
+Recase.Enumerable.convert_keys([%{"snakeCase" => "value"}], &Recase.to_snake/1) # => [%{"snake_case" => "value"}]
 ```
 
 ## Changelog
