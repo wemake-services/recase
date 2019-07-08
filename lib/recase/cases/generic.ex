@@ -84,7 +84,9 @@ defmodule Recase.Generic do
 
   ##############################################################################
 
-  @spec do_split(input :: String.t(), acc :: [String.t()]) :: [String.t()]
+  @spec do_split(input :: String.t(), {binary(), acc :: [String.t()]}) :: [
+          String.t()
+        ]
   defp do_split(string, acc \\ {"", []})
 
   defp do_split("", {"", acc}), do: Enum.reverse(acc)
