@@ -1,6 +1,13 @@
 # Changelog
 
 
+## Version 0.6.0
+
+### Features
+
+- Adds `Recase.Enumerable`
+
+
 ## Version 0.5.0
 
 ### Features

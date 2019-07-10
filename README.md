@@ -113,11 +113,17 @@ Recase.to_title("some value") # => "Some Value"
 You can convert all keys in an enumerable with:
 
 ```elixir
-Recase.Enumerable.convert_keys(%{"yourKey" => "value"}, &Recase.to_snake/1) # => %{"your_key" => "value"}
-Recase.Enumerable.convert_keys(%{"your_key" => "value"}, &Recase.to_camel/1) # => %{"yourKey" => "value"}
-Recase.Enumerable.convert_keys(%{"your_key" => %{"yourKey" => "value"}}, &Recase.to_pascal/1) # => %{"YourKey" => %{"YourKey" => "value"}}
-Recase.Enumerable.convert_keys([%{"yourKey" => "value"}], &Recase.to_snake/1) # => [%{"your_key" => "value"}]
+Recase.Enumerable.convert_keys(
+  %{"yourKey" => "value"},
+  &Recase.to_snake/1
+) # => %{"your_key" => "value"}
+
+Recase.Enumerable.convert_keys(
+  %{"your_key" => "value"},
+  &Recase.to_camel/1
+) # => %{"yourKey" => "value"}
 ```
+
 
 ## Changelog
 
