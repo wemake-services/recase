@@ -46,7 +46,7 @@ defmodule Recase.Mixfile do
       {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
 
       # Documentation:
-      {:ex_doc, "~> 0.20.0", only: :dev, runtime: false}
+      {:ex_doc, "~> 0.21.0", only: :dev, runtime: false}
     ]
   end
 
