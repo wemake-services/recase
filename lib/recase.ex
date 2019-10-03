@@ -9,6 +9,7 @@ defmodule Recase do
     CamelCase,
     ConstantCase,
     DotCase,
+    HeaderCase,
     KebabCase,
     PascalCase,
     PathCase,
@@ -145,4 +146,18 @@ defmodule Recase do
   """
   @spec to_title(String.t()) :: String.t()
   def to_title(value), do: TitleCase.convert(value)
+
+  @doc """
+  Converts string to Header-Case
+
+  ## Examples
+
+  iex> Recase.to_header("SomeValue")
+  "Some-Value"
+
+  iex> Recase.to_header("some value")
+  "Some-Value"
+  """
+  @spec to_header(String.t()) :: String.t()
+  def to_header(value), do: HeaderCase.convert(value)
 end

@@ -108,6 +108,15 @@ Recase.to_title("some-value") # => "Some Value"
 Recase.to_title("some value") # => "Some Value"
 ```
 
+### Header
+
+Header case uses the same case as PascalCase, while using `-` as a separator.
+
+```elixir
+Recase.to_header("SomeValue") # => "Some-Value"
+Recase.to_header("some value") # => "Some-Value"
+```
+
 ### Enumerable
 
 You can convert all keys in an enumerable with:
