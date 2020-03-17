@@ -43,7 +43,7 @@ defmodule Recase.Mixfile do
     [
       {:excoveralls, "~> 0.5", only: :test},
       {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 0.5", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # Documentation:
       {:ex_doc, "~> 0.21.0", only: :dev, runtime: false}
