@@ -128,7 +128,7 @@ Recase.Enumerable.convert_keys(
   &Recase.to_camel/1
 ) # => %{"yourKey" => "value"}
 
-Recase.Enumerable.convert_keys(
+Recase.Enumerable.atomize_keys(
   %{"yourKey" => "value"},
   &Recase.to_snake/1
 ) # => %{"your_key: "value"}
