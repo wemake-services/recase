@@ -68,7 +68,7 @@ defmodule RecaseEnumerableTest do
     end
 
     test "should return the same list when list items are usual text" do
-      assert Recase.Enumerable.convert_keys(
+      assert Recase.Enumerable.atomize_keys(
                ["upper case", "upper-case2"],
                &Recase.to_pascal/1
              ) == ["upper case", "upper-case2"]
