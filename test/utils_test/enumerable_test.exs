@@ -73,5 +73,12 @@ defmodule RecaseEnumerableTest do
                &Recase.to_pascal/1
              ) == ["upper case", "upper-case2"]
     end
+
+    test "should worked with mixed key formats (atom, string)" do
+      assert Recase.Enumerable.atomize_keys(
+               %{:atom_key => "value", "string_key" => "value"},
+               &Recase.to_pascal/1
+             ) == %{AtomKey: "value", StringKey: "value"}
+    end
   end
 end

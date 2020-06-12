@@ -10,7 +10,13 @@ defmodule Recase.Enumerable do
   def atomize_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
     |> Enum.into(%{}, fn {key, value} ->
-      {cast_atom(fun.(key)), handle_value(value, fun, &atomize_keys/2)}
+      atom_key =
+        key
+        |> cast_string()
+        |> fun.()
+        |> cast_atom()
+
+      {atom_key, handle_value(value, fun, &atomize_keys/2)}
     end)
   end
 
@@ -42,7 +48,9 @@ defmodule Recase.Enumerable do
 
   defp handle_value(value, _, _), do: value
 
-  defp cast_atom(value) when is_binary(value), do: String.to_atom(value)
+  defp cast_string(value) when is_binary(value), do: value
 
-  defp cast_atom(value) when is_atom(value), do: value
+  defp cast_string(value) when is_atom(value), do: Atom.to_string(value)
+
+  defp cast_atom(value), do: String.to_atom(value)
 end
