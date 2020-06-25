@@ -131,7 +131,7 @@ Recase.Enumerable.convert_keys(
 Recase.Enumerable.atomize_keys(
   %{"yourKey" => "value"},
   &Recase.to_snake/1
-) # => %{"your_key: "value"}
+) # => %{your_key: "value"}
 
 Recase.Enumerable.atomize_keys(
   %{"your_key" => "value"},
