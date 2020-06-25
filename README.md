@@ -6,13 +6,11 @@
 
 `Recase` helps you to convert a string from any case to any case.
 
-
 ## Why?
 
 One can ask: "Why should I use `recase` when I can use built-in `Macro` module?". But, you have to keep in mind that `Macro`'s functions are [not suitable](https://github.com/elixir-lang/elixir/blob/4aa81645b0588b56fb61cd154dcaee354732aa5c/lib/elixir/lib/macro.ex#L1265) for general case usage:
 
 > Do not use it as a general mechanism for underscoring or camelizing strings as it does not support Unicode or characters that are not valid in Elixir identifiers.
-
 
 ## Installation
 
@@ -21,7 +19,6 @@ def deps do
   [{:recase, "~> 0.5"}]
 end
 ```
-
 
 ## Usage
 
@@ -102,7 +99,6 @@ Recase.to_sentence("some value") # => "Some value"
 
 Title case applies a "Title Style" to all words in a sentence.
 
-
 ```elixir
 Recase.to_title("some-value") # => "Some Value"
 Recase.to_title("some value") # => "Some Value"
@@ -131,18 +127,25 @@ Recase.Enumerable.convert_keys(
   %{"your_key" => "value"},
   &Recase.to_camel/1
 ) # => %{"yourKey" => "value"}
-```
 
+Recase.Enumerable.atomize_keys(
+  %{"yourKey" => "value"},
+  &Recase.to_snake/1
+) # => %{your_key: "value"}
+
+Recase.Enumerable.atomize_keys(
+  %{"your_key" => "value"},
+  &Recase.to_camel/1
+) # => %{yourKey: "value"}
+```
 
 ## Changelog
 
 Full changelog is available [here](https://github.com/sobolevn/recase/blob/master/CHANGELOG.md).
 
-
 ## License
 
 MIT. See [LICENSE.md](https://github.com/sobolevn/recase/blob/master/LICENSE.md) for more details.
-
 
 ## Thanks
 
