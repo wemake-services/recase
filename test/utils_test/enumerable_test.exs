@@ -1,7 +1,7 @@
 defmodule RecaseEnumerableTest do
   use ExUnit.Case
 
-  describe "convet_keys/2" do
+  describe "convert_keys/2" do
     test "should convert keys of a map" do
       assert Recase.Enumerable.convert_keys(
                %{"upper case" => "value", "upper-case2" => "value"},
