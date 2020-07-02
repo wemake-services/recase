@@ -11,6 +11,7 @@ defmodule Recase do
     DotCase,
     HeaderCase,
     KebabCase,
+    NameCase,
     PascalCase,
     PathCase,
     SentenceCase,
@@ -160,4 +161,18 @@ defmodule Recase do
   """
   @spec to_header(String.t()) :: String.t()
   def to_header(value), do: HeaderCase.convert(value)
+
+  @doc """
+  Converts string to Name Case
+
+  ## Examples
+
+  iex> Recase.to_name("mccarthy o'donnell")
+  "McCarthy O'Donnell"
+
+  iex> Recase.to_name("von streit")
+  "von Streit"
+  """
+  @spec to_name(String.t()) :: String.t()
+  def to_name(value), do: NameCase.convert(value)
 end
