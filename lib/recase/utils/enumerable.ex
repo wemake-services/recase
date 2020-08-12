@@ -41,6 +41,8 @@ defmodule Recase.Enumerable do
     |> Enum.map(fn value -> handle_value(value, fun, &convert_keys/2) end)
   end
 
+  defp handle_value(%DateTime{} = value, _fun, _converter), do: value
+
   defp handle_value(value, fun, converter)
        when is_map(value) or is_list(value) do
     converter.(value, fun)

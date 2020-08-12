@@ -36,6 +36,26 @@ defmodule RecaseEnumerableTest do
                &Recase.to_pascal/1
              ) == ["upper case", "upper-case2"]
     end
+
+    test "should convert when value is a datetime" do
+      datetime = %DateTime{
+        year: 2000,
+        month: 2,
+        day: 29,
+        zone_abbr: "AMT",
+        hour: 23,
+        minute: 0,
+        second: 7,
+        utc_offset: -14_400,
+        std_offset: 0,
+        time_zone: "America/Manaus"
+      }
+
+      assert Recase.Enumerable.convert_keys(
+               %{"upper case" => datetime},
+               &Recase.to_pascal/1
+             ) == %{"UpperCase" => datetime}
+    end
   end
 
   describe "atomize_keys/2" do
