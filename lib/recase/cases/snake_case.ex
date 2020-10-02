@@ -19,11 +19,11 @@ defmodule Recase.SnakeCase do
 
   @sep "_"
 
-  # TODO: adjust spec?
-  def convert(value) when is_atom(value),
-    do: convert(Atom.to_string(value)) |> String.to_atom()
-
   @spec convert(String.t()) :: String.t()
   def convert(value) when is_binary(value),
     do: rejoin(value, separator: @sep, case: :down)
+
+  @spec convert(atom()) :: atom()
+  def convert(value) when is_atom(value),
+    do: convert(Atom.to_string(value)) |> String.to_atom()
 end
