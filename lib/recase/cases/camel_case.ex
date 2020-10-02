@@ -15,8 +15,12 @@ defmodule Recase.CamelCase do
 
   import Recase.Generic, only: [rejoin: 2]
 
+  # TODO: adjust spec?
   @spec convert(String.t()) :: String.t()
   def convert(""), do: ""
+
+  def convert(value) when is_atom(value),
+    do: convert(Atom.to_string(value)) |> String.to_atom()
 
   def convert(value) when is_binary(value) do
     with <<char::utf8, rest::binary>> <-
