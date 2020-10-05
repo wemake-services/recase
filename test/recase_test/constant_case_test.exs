@@ -19,6 +19,13 @@ defmodule Recase.ConstantCaseTest do
     assert convert("constant?!case") == expected
   end
 
+  test "should constant case atoms" do
+    expected = :CONSTANT_CASE
+    assert convert(:constantCase) == expected
+    assert convert(:constant_Case) == expected
+    assert convert(:ConstantCase) == expected
+  end
+
   test "should return single letter" do
     assert convert("a") == "A"
   end
