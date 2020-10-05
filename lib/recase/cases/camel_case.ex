@@ -26,5 +26,5 @@ defmodule Recase.CamelCase do
 
   @spec convert(atom()) :: atom()
   def convert(value) when is_atom(value),
-    do: convert(Atom.to_string(value)) |> String.to_atom()
+    do: convert(Atom.to_string(value)) |> Recase.Atomize.safe_atom()
 end
