@@ -25,7 +25,7 @@ defmodule Recase.Enumerable do
     |> Enum.map(fn value -> handle_value(value, fun, &atomize_keys/2) end)
   end
 
-  @spec atomize_keys(Enumerable.t(), fun) :: Enumerable.t()
+  @spec stringify_keys(Enumerable.t(), fun) :: Enumerable.t()
   def stringify_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
     |> Enum.into(%{}, fn {key, value} ->
