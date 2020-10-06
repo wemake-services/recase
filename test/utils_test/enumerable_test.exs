@@ -56,6 +56,12 @@ defmodule RecaseEnumerableTest do
                &Recase.to_pascal/1
              ) == %{"UpperCase" => datetime}
     end
+
+    test "should return value if no callback given" do
+      assert Recase.Enumerable.convert_keys(%{
+               "upper case" => %{"upper-case2" => "value"}
+             }) == %{"upper case" => %{"upper-case2" => "value"}}
+    end
   end
 
   describe "atomize_keys/2" do

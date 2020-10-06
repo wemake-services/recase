@@ -6,10 +6,11 @@ defmodule Recase.Enumerable do
   @doc """
   Invoke fun for each keys of the enumerable and cast keys to atoms.
   """
-  @spec atomize_keys(Enumerable.t(), fun) :: Enumerable.t()
+  @spec atomize_keys(Enumerable.t()) :: Enumerable.t()
   def atomize_keys(enumerable),
     do: atomize_keys(enumerable, fn x -> x end)
 
+  @spec atomize_keys(Enumerable.t(), fun) :: Enumerable.t()
   def atomize_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
     |> Enum.into(%{}, fn {key, value} ->
@@ -29,10 +30,11 @@ defmodule Recase.Enumerable do
     |> Enum.map(fn value -> handle_value(value, fun, &atomize_keys/2) end)
   end
 
-  @spec stringify_keys(Enumerable.t(), fun) :: Enumerable.t()
+  @spec stringify_keys(Enumerable.t()) :: Enumerable.t()
   def stringify_keys(enumerable),
     do: stringify_keys(enumerable, fn x -> x end)
 
+  @spec stringify_keys(Enumerable.t(), fun) :: Enumerable.t()
   def stringify_keys(enumerable, fun)
       when is_map(enumerable) do
     enumerable
@@ -55,10 +57,11 @@ defmodule Recase.Enumerable do
   @doc """
   Invoke fun for each keys of the enumerable.
   """
-  @spec convert_keys(Enumerable.t(), fun) :: Enumerable.t()
+  @spec convert_keys(Enumerable.t()) :: Enumerable.t()
   def convert_keys(enumerable),
     do: convert_keys(enumerable, fn x -> x end)
 
+  @spec convert_keys(Enumerable.t(), fun) :: Enumerable.t()
   def convert_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
     |> Enum.into(%{}, fn {key, value} ->
