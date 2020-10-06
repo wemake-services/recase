@@ -1,6 +1,17 @@
 # Changelog
 
 
+## Version 0.7.0
+
+### Features
+
+- Adds ability to covert with `:atom`
+
+### Fixes
+
+- Fixes how we handle several types of values in `Recase.Enumerable`
+
+
 ## Version 0.6.0
 
 ### Features

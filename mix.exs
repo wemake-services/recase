@@ -1,7 +1,7 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.6.0"
+  @version "0.7.0"
   @url "https://github.com/sobolevn/recase"
 
   def project do
@@ -63,7 +63,8 @@ defmodule Recase.Mixfile do
       maintainers: ["Nikita Sobolev"],
       licenses: ["MIT"],
       links: %{"GitHub" => @url},
-      files: ~w(mix.exs README.md lib)
+      files: ~w(mix.exs README.md lib),
+      exclude_patterns: [".DS_Store"]
     ]
   end
 end
