@@ -14,12 +14,6 @@ defmodule Recase.PascalCaseTest do
     assert convert("UpperCase") == "UpperCase"
   end
 
-  test "should pascal case atoms" do
-    assert convert(:upper_case) == :UpperCase
-    assert convert(:upperCase) == :UpperCase
-    assert convert(:UpperCase) == :UpperCase
-  end
-
   test "should not modify extra chars" do
     assert convert("!#$%^&*(){}[]~`'\"") == "$%^&*(){}[]~`'\""
   end
