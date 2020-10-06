@@ -153,8 +153,10 @@ defmodule RecaseEnumerableTest do
     end
 
     test "should stringify without formatting if no callback given" do
-      assert Recase.Enumerable.stringify_keys(
-               %{:atom_key => "value", "string_key" => "value"}
-             ) == %{"atom_key" => "value", "string_key" => "value"}
+      assert Recase.Enumerable.stringify_keys(%{
+               :atom_key => "value",
+               "string_key" => "value"
+             }) == %{"atom_key" => "value", "string_key" => "value"}
     end
+  end
 end
