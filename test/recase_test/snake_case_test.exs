@@ -18,6 +18,13 @@ defmodule Recase.SnakeCaseTest do
     assert convert("snake?!case") == "snake_case"
   end
 
+  test "should snake case atoms" do
+    assert convert(:snakeCase) == :snake_case
+    assert convert(:Snake_Case) == :snake_case
+    assert convert(:SnakeCase) == :snake_case
+    assert convert(:SNAKE_CASE) == :snake_case
+  end
+
   test "should return single letter" do
     assert convert("a") == "a"
   end

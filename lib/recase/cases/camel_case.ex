@@ -23,4 +23,8 @@ defmodule Recase.CamelCase do
            rejoin(value, separator: "", case: :title),
          do: String.downcase(<<char::utf8>>) <> rest
   end
+
+  @spec convert(atom()) :: atom()
+  def convert(value) when is_atom(value),
+    do: convert(Atom.to_string(value)) |> Recase.Generic.safe_atom()
 end
