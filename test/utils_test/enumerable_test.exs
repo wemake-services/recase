@@ -75,8 +75,8 @@ defmodule RecaseEnumerableTest do
     test "should convert keys of a nested map" do
       assert Recase.Enumerable.atomize_keys(
                %{"upper case" => %{"upper-case2" => "value"}},
-               &Recase.to_path(&1, "\\")
-             ) == %{:"upper\\case" => %{:"upper\\case2" => "value"}}
+               &Recase.to_pascal/1
+             ) == %{:UpperCase => %{:UpperCase2 => "value"}}
     end
 
     test "should convert keys of a map in list" do
