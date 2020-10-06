@@ -32,4 +32,11 @@ defmodule Recase.CamelCaseTest do
   test "should return empty string" do
     assert convert("") == ""
   end
+
+  test "should camel case atoms" do
+    assert convert(:camel_case) == :camelCase
+    assert convert(:CamelCase) == :camelCase
+    assert convert(:camelCase) == :camelCase
+    assert convert(:CAMelCase) == :camelCase
+  end
 end

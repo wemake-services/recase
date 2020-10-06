@@ -30,4 +30,11 @@ defmodule Recase.SnakeCaseTest do
   test "should return empty string" do
     assert convert("") == ""
   end
+
+  test "should snake case atoms" do
+    assert convert(:snakeCase) == :snake_case
+    assert convert(:Snake_Case) == :snake_case
+    assert convert(:SnakeCase) == :snake_case
+    assert convert(:SNAKE_CASE) == :snake_case
+  end
 end
