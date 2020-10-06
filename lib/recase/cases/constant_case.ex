@@ -18,4 +18,8 @@ defmodule Recase.ConstantCase do
   @spec convert(String.t()) :: String.t()
   def convert(value) when is_binary(value),
     do: rejoin(value, separator: "_", case: :up)
+
+  @spec convert(atom()) :: atom()
+  def convert(value) when is_atom(value),
+    do: convert(Atom.to_string(value)) |> Recase.Generic.safe_atom()
 end

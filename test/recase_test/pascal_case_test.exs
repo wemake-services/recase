@@ -30,4 +30,10 @@ defmodule Recase.PascalCaseTest do
   test "should return empty string" do
     assert convert("") == ""
   end
+
+  test "should pascal case atoms" do
+    assert convert(:upper_case) == :UpperCase
+    assert convert(:upperCase) == :UpperCase
+    assert convert(:UpperCase) == :UpperCase
+  end
 end
