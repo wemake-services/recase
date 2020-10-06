@@ -7,7 +7,8 @@ defmodule Recase.Enumerable do
   Invoke fun for each keys of the enumerable and cast keys to atoms.
   """
   @spec atomize_keys(Enumerable.t(), fun) :: Enumerable.t()
-  def atomize_keys(enumerable, fun \\ fn x -> x end)
+  def atomize_keys(enumerable),
+    do: atomize_keys(enumerable, fn x -> x end)
 
   def atomize_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
