@@ -29,7 +29,8 @@ defmodule Recase.Enumerable do
   end
 
   @spec stringify_keys(Enumerable.t(), fun) :: Enumerable.t()
-  def stringify_keys(enumerable, fun \\ fn x -> x end)
+  def stringify_keys(enumerable),
+    do: stringify_keys(enumerable, fn x -> x end)
 
   def stringify_keys(enumerable, fun)
       when is_map(enumerable) do
