@@ -1,6 +1,6 @@
 defmodule Recase.Generic do
   @moduledoc """
-  Generic module to split and join strings back or convert strings to atoms.
+  Generic module to split and join strings back.
 
   This module should not be used directly.
   """
@@ -80,19 +80,6 @@ defmodule Recase.Generic do
     |> do_split()
     |> Enum.map(mapper)
     |> Enum.join(Keyword.get(opts, :separator, ?_))
-  end
-
-  @doc """
-  Atomizes a string value.
-  Uses an existing atom if possible.
-  """
-  @spec safe_atom(String.t()) :: atom()
-  def safe_atom(string_value) do
-    try do
-      String.to_existing_atom(string_value)
-   rescue
-       ArgumentError -> String.to_atom(string_value)
-   end
   end
 
   ##############################################################################
