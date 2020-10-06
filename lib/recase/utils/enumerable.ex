@@ -54,7 +54,8 @@ defmodule Recase.Enumerable do
   Invoke fun for each keys of the enumerable.
   """
   @spec convert_keys(Enumerable.t(), fun) :: Enumerable.t()
-  def convert_keys(enumerable, fun \\ fn x -> x end)
+  def convert_keys(enumerable),
+    do: convert_keys(enumerable, fn x -> x end)
 
   def convert_keys(enumerable, fun) when is_map(enumerable) do
     enumerable
