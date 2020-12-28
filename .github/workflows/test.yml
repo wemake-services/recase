@@ -59,8 +59,12 @@ jobs:
         mix deps.get
         mix compile
 
-    - name: Run Tests
+    - name: Run linters
       run: |
         mix format --check-formatted
         mix credo --strict
-        mix coveralls.github
+
+    - name: Run Tests
+      run: mix coveralls.github
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
