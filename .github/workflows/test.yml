@@ -34,8 +34,8 @@ jobs:
     - name: Setup elixir
       uses: actions/setup-elixir@v1
       with:
-        elixir: ${{ matrix.elixir }}
-        otp: ${{ matrix.otp }}
+        elixir-version: ${{ matrix.elixir }}
+        otp-version: ${{ matrix.otp }}
 
     - name: Get deps cache
       uses: actions/cache@v2
