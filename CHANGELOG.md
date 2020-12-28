@@ -1,6 +1,13 @@
 # Changelog
 
 
+## Version 1.0.0 WIP
+
+### Features
+
+- **Breaking**: Drops `1.6` elixir support
+
+
 ## Version 0.7.0
 
 ### Features
