@@ -1,0 +1,38 @@
+name: test
+
+'on':
+  push:
+  pull_request:
+    branches:
+      # Branches from forks have the form 'user:branch-name'. Reference:
+      # https://github.community/t/how-to-trigger-an-action-on-push-or-pull-request-but-not-both/16662/9
+    - '**:**'
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      MIX_ENV: test
+    strategy:
+      matrix:
+        elixir-version: ['1.10', '1.11']
+        otp-version: ['22', '23']
+    continue-on-error: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup elixir
+      uses: actions/setup-elixir@v1
+      with:
+        elixir-version: ${{ matrix.elixir-version }}
+        otp-version: ${{ matrix.otp-version }}
+    - name: Install Dependencies
+      run: mix deps.get
+
+    - name: Run Tests
+      run: |
+        mix format --check-formatted
+        mix credo --strict
+        mix coveralls.travis
