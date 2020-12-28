@@ -41,8 +41,8 @@ defmodule Recase.Mixfile do
 
   defp deps do
     [
-      {:excoveralls, "~> 0.12", only: :test},
-      {:credo, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.13", only: :test},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
 
       # Documentation:
