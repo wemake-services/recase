@@ -19,6 +19,15 @@ jobs:
       matrix:
         elixir-version: ['1.10', '1.11']
         otp-version: ['22', '23']
+        include:
+          - elixir-version: '1.6'
+            otp-version: '20'
+          - elixir-version: '1.7'
+            otp-version: '20'
+          - elixir-version: '1.8'
+            otp-version: '21'
+          - elixir-version: '1.9'
+            otp-version: '21'
     continue-on-error: false
 
     steps:

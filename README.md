@@ -2,13 +2,16 @@
 
 ![Recase](https://raw.githubusercontent.com/sobolevn/recase/master/media/logo.png)
 
-[![Build Status](https://travis-ci.org/sobolevn/recase.svg?branch=master)](https://travis-ci.org/sobolevn/recase) [![Coverage Status](https://coveralls.io/repos/github/sobolevn/recase/badge.svg?branch=master)](https://coveralls.io/github/sobolevn/recase?branch=master) [![Hex Version](https://img.shields.io/hexpm/v/recase.svg)](https://hex.pm/packages/recase) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Build Status](https://github.com/sobolevn/recase/workflows/test/badge.svg?branch=master&event=push)](https://github.com/sobolevn/recase/actions?query=workflow%3Atest)
+[![Coverage Status](https://coveralls.io/repos/github/sobolevn/recase/badge.svg?branch=master)](https://coveralls.io/github/sobolevn/recase?branch=master)
+[![Hex Version](https://img.shields.io/hexpm/v/recase.svg)](https://hex.pm/packages/recase)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 `Recase` helps you to convert a string from any case to any case.
 
 ## Why?
 
-One can ask: "Why should I use `recase` when I can use built-in `Macro` module?". But, you have to keep in mind that `Macro`'s functions are [not suitable](https://github.com/elixir-lang/elixir/blob/4aa81645b0588b56fb61cd154dcaee354732aa5c/lib/elixir/lib/macro.ex#L1265) for general case usage:
+One can ask: "Why should I use `Recase` when I can use built-in `Macro` module?". But, you have to keep in mind that `Macro`'s functions are [not suitable](https://github.com/elixir-lang/elixir/blob/4aa81645b0588b56fb61cd154dcaee354732aa5c/lib/elixir/lib/macro.ex#L1265) for general case usage:
 
 > Do not use it as a general mechanism for underscoring or camelizing strings as it does not support Unicode or characters that are not valid in Elixir identifiers.
 
