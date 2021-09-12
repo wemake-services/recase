@@ -153,11 +153,11 @@ defmodule Recase do
 
   ## Examples
 
-  iex> Recase.to_header("SomeValue")
-  "Some-Value"
+      iex> Recase.to_header("SomeValue")
+      "Some-Value"
 
-  iex> Recase.to_header("some value")
-  "Some-Value"
+      iex> Recase.to_header("some value")
+      "Some-Value"
   """
   @spec to_header(String.t()) :: String.t()
   def to_header(value), do: HeaderCase.convert(value)
@@ -167,11 +167,11 @@ defmodule Recase do
 
   ## Examples
 
-  iex> Recase.to_name("mccarthy o'donnell")
-  "McCarthy O'Donnell"
+      iex> Recase.to_name("mccarthy o'donnell")
+      "McCarthy O'Donnell"
 
-  iex> Recase.to_name("von streit")
-  "von Streit"
+      iex> Recase.to_name("von streit")
+      "von Streit"
   """
   @spec to_name(String.t()) :: String.t()
   def to_name(value), do: NameCase.convert(value)
