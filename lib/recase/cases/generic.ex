@@ -72,8 +72,7 @@ defmodule Recase.Generic do
 
     input
     |> do_split()
-    |> Enum.map(mapper)
-    |> Enum.join(Keyword.get(opts, :separator, ?_))
+    |> Enum.map_join(Keyword.get(opts, :separator, ?_), mapper)
   end
 
   @doc """
