@@ -5,7 +5,10 @@
 [![Build Status](https://github.com/sobolevn/recase/workflows/test/badge.svg?branch=master&event=push)](https://github.com/sobolevn/recase/actions?query=workflow%3Atest)
 [![Coverage Status](https://coveralls.io/repos/github/sobolevn/recase/badge.svg?branch=master)](https://coveralls.io/github/sobolevn/recase?branch=master)
 [![Hex Version](https://img.shields.io/hexpm/v/recase.svg)](https://hex.pm/packages/recase)
-[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/recase/)
+[![Total Download](https://img.shields.io/hexpm/dt/recase.svg)](https://hex.pm/packages/recase)
+[![License](https://img.shields.io/hexpm/l/recase.svg)](https://github.com/sobolevn/recase/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/sobolevn/recase.svg)](https://github.com/sobolevn/recase/commits/master)
 
 `Recase` helps you to convert a string from any case to any case.
 
@@ -19,7 +22,9 @@ One can ask: "Why should I use `Recase` when I can use built-in `Macro` module?"
 
 ```elixir
 def deps do
-  [{:recase, "~> 0.5"}]
+  [
+    {:recase, "~> 0.5"}
+  ]
 end
 ```
 
@@ -144,11 +149,14 @@ Recase.Enumerable.atomize_keys(
 
 ## Changelog
 
-Full changelog is available [here](https://github.com/sobolevn/recase/blob/master/CHANGELOG.md).
+Full changelog is available [here](./CHANGELOG.md).
 
-## License
+## Copyright and License
 
-MIT. See [LICENSE.md](https://github.com/sobolevn/recase/blob/master/LICENSE.md) for more details.
+Copyright (c) 2017 Nikita Sobolev
+
+This work is free. You can redistribute it and/or modify it under the
+terms of the MIT License. See the [LICENSE.md](./LICENSE.md) file for more details.
 
 ## Thanks
 

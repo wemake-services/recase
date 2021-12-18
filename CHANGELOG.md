@@ -1,5 +1,9 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Version 1.0.0 WIP
 
@@ -8,25 +12,25 @@
 - **Breaking**: Drops `1.6` elixir support
 
 
-## Version 0.7.0
+## Version 0.7.0 (2020-10-06)
 
 ### Features
 
-- Adds ability to covert with `:atom`
+- Adds ability to convert with `:atom`
 
 ### Fixes
 
 - Fixes how we handle several types of values in `Recase.Enumerable`
 
 
-## Version 0.6.0
+## Version 0.6.0 (2019-07-10)
 
 ### Features
 
 - Adds `Recase.Enumerable`
 
 
-## Version 0.5.0
+## Version 0.5.0 (2019-07-01)
 
 ### Features
 
@@ -42,7 +46,7 @@
 - Adds `mix format`
 
 
-## Version 0.4.0
+## Version 0.4.0 (2018-12-25)
 
 ### Features
 
@@ -53,7 +57,7 @@
 - Package version updates
 
 
-## Version 0.3.0
+## Version 0.3.0 (2018-01-18)
 
 ### Breaking changes
 
@@ -61,7 +65,7 @@
 - Minimal `elixir` version is now `1.5`
 
 
-## Version 0.2.0
+## Version 0.2.0 (2017-07-15)
 
 This version brings just one, but braking change. As it was discussed `to_upper` is a misleading name for a function. It is not clear what this function does. Since traditionally `uppercase` is just all uppercased letters. And it has nothing to do with `PascalCase`.
 
@@ -79,7 +83,7 @@ This version brings just one, but braking change. As it was discussed `to_upper`
 - Made changes to reflect `Pascal` and `Upper` case issue
 
 
-## Version 0.1.1
+## Version 0.1.1 (2017-07-12)
 
 ### Improvements
 
@@ -92,6 +96,6 @@ This version brings just one, but braking change. As it was discussed `to_upper`
 - Updates README
 
 
-## Version 0.1.0
+## Version 0.1.0 (2017-07-08)
 
 Initial release supporting: `UpperCase`, `camelCase`, `snake_case`, `kebab-case`.

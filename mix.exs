@@ -59,7 +59,18 @@ defmodule Recase.Mixfile do
   end
 
   defp docs do
-    [extras: ["README.md"], main: "readme"]
+    [
+      extras: [
+        "CHANGELOG.md": [],
+        "CONTRIBUTING.md": [title: "Contributing"],
+        "LICENSE.md": [title: "License"],
+        "README.md": [title: "Overview"]
+      ],
+      main: "readme",
+      source_url: @url,
+      source_ref: @version,
+      formatters: ["html"]
+    ]
   end
 
   defp package do

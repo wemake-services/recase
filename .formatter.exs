@@ -1,4 +1,5 @@
+# Used by "mix format"
 [
-  inputs: ["*.{ex,exs}", "{config,lib,test}/**/*.{ex,exs}"],
-  line_length: 79
+  line_length: 79,
+  inputs: ["{mix,.formatter}.exs", "{config,lib,test}/**/*.{ex,exs}"]
 ]
