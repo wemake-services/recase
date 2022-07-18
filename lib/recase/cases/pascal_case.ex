@@ -23,7 +23,7 @@ defmodule Recase.PascalCase do
   2. ThisIsAlsoUpperCase
 
   So, it was decided to rename this module into `PascalCase`.
-  For other details see: https://github.com/sobolevn/recase/issues/2
+  For other details see: https://github.com/wemake-services/recase/issues/2
   """
 
   import Recase.Generic, only: [rejoin: 2]

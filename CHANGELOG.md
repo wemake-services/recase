@@ -34,8 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Features
 
-- Improves performance, see [#46](https://github.com/sobolevn/recase/pull/46)
-- Adds `title_case`, see [#38](https://github.com/sobolevn/recase/pull/39)
+- Improves performance, see [#46](https://github.com/wemake-services/recase/pull/46)
+- Adds `title_case`, see [#38](https://github.com/wemake-services/recase/pull/39)
 
 ### Misc
 
@@ -50,7 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Features
 
-- Adds `sentence_case`, see [#38](https://github.com/sobolevn/recase/pull/38)
+- Adds `sentence_case`, see [#38](https://github.com/wemake-services/recase/pull/38)
 
 ### Misc
 
@@ -61,7 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Breaking changes
 
-- `snake_case` now removes punctuation, see [#5](https://github.com/sobolevn/recase/issues/5)
+- `snake_case` now removes punctuation, see [#5](https://github.com/wemake-services/recase/issues/5)
 - Minimal `elixir` version is now `1.5`
 
 
@@ -71,8 +71,8 @@ This version brings just one, but braking change. As it was discussed `to_upper`
 
 ### Braking changes
 
-- `UpperCase` renamed to `PascalCase` ([#2](https://github.com/sobolevn/recase/issues/2))
-- `Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/sobolevn/recase/issues/2))
+- `UpperCase` renamed to `PascalCase` ([#2](https://github.com/wemake-services/recase/issues/2))
+- `Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/wemake-services/recase/issues/2))
 
 ### Tests
 

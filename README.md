@@ -1,14 +1,14 @@
 # Recase
 
-![Recase](https://raw.githubusercontent.com/sobolevn/recase/master/media/logo.png)
+![Recase](https://raw.githubusercontent.com/wemake-services/recase/master/media/logo.png)
 
-[![Build Status](https://github.com/sobolevn/recase/workflows/test/badge.svg?branch=master&event=push)](https://github.com/sobolevn/recase/actions?query=workflow%3Atest)
-[![Coverage Status](https://coveralls.io/repos/github/sobolevn/recase/badge.svg?branch=master)](https://coveralls.io/github/sobolevn/recase?branch=master)
+[![Build Status](https://github.com/wemake-services/recase/workflows/test/badge.svg?branch=master&event=push)](https://github.com/wemake-services/recase/actions?query=workflow%3Atest)
+[![Coverage Status](https://coveralls.io/repos/github/wemake-services/recase/badge.svg?branch=master)](https://coveralls.io/github/wemake-services/recase?branch=master)
 [![Hex Version](https://img.shields.io/hexpm/v/recase.svg)](https://hex.pm/packages/recase)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/recase/)
 [![Total Download](https://img.shields.io/hexpm/dt/recase.svg)](https://hex.pm/packages/recase)
-[![License](https://img.shields.io/hexpm/l/recase.svg)](https://github.com/sobolevn/recase/blob/master/LICENSE.md)
-[![Last Updated](https://img.shields.io/github/last-commit/sobolevn/recase.svg)](https://github.com/sobolevn/recase/commits/master)
+[![License](https://img.shields.io/hexpm/l/recase.svg)](https://github.com/wemake-services/recase/blob/master/LICENSE.md)
+[![Last Updated](https://img.shields.io/github/last-commit/wemake-services/recase.svg)](https://github.com/wemake-services/recase/commits/master)
 
 `Recase` helps you to convert a string from any case to any case.
 
