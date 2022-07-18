@@ -6,8 +6,10 @@ updates:
     interval: daily
     time: "02:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: ex_doc
-    versions:
-    - 0.24.0
-    - 0.24.1
+
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "02:00"
+  open-pull-requests-limit: 10
