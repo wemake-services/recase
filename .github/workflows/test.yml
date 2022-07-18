@@ -27,7 +27,7 @@ jobs:
     continue-on-error: false
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Setup elixir
       uses: erlef/setup-elixir@v1
