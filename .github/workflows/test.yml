@@ -15,8 +15,8 @@ jobs:
       MIX_ENV: test
     strategy:
       matrix:
-        elixir: ['1.10', '1.11', '1.12', '1.13']
-        otp: ['23', '24']
+        elixir: ['1.13', '1.14']
+        otp: ['23', '24', '25']
         include:
           - elixir: '1.7'
             otp: '20'
@@ -24,13 +24,19 @@ jobs:
             otp: '21'
           - elixir: '1.9'
             otp: '21'
+          - elixir: '1.10'
+            otp: '22'
+          - elixir: '1.11'
+            otp: '23'
+          - elixir: '1.12'
+            otp: '24'
     continue-on-error: false
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Setup elixir
-      uses: erlef/setup-elixir@v1
+      uses: erlef/setup-beam@v1
       with:
         elixir-version: ${{ matrix.elixir }}
         otp-version: ${{ matrix.otp }}
