@@ -16,6 +16,8 @@ defmodule Recase.SnakeCaseTest do
     assert convert("--snake-case--") == "snake_case"
     assert convert("snake#case") == "snake_case"
     assert convert("snake?!case") == "snake_case"
+    assert convert("SnakeACase") == "snake_a_case"
+    assert convert("CurrencyISOCode") == "currency_i_s_o_code"
   end
 
   test "should return single letter" do

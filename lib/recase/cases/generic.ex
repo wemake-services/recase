@@ -107,16 +107,19 @@ defmodule Recase.Generic do
   end)
 
   Enum.each(?A..?Z, fn char ->
-    defp do_split(<<unquote(char), rest::binary>>, {"", acc}),
-      do: do_split(rest, {<<unquote(char)::utf8>>, acc})
+    defp do_split(<<unquote(char), _::binary>> = input, {"", acc}) do
+      {upcase_streak, rest} = upcase_streak(input, "")
 
-    defp do_split(<<unquote(char), rest::binary>>, {curr, acc}) do
-      <<c::utf8, _::binary>> = String.reverse(curr)
+      case byte_size(upcase_streak) do
+        1 ->
+          do_split(rest, {<<unquote(char)::utf8>>, acc})
 
-      if c in ?A..?Z do
-        do_split(rest, {curr <> <<unquote(char)::utf8>>, acc})
-      else
-        do_split(rest, {<<unquote(char)::utf8>>, [curr | acc]})
+        2 ->
+          <<c1::utf8, c2::utf8>> = upcase_streak
+          do_split(rest, {<<c2::utf8>>, [<<c1::utf8>> | acc]})
+
+        _ ->
+          do_split(rest, {<<upcase_streak::binary>>, acc})
       end
     end
   end)
@@ -145,4 +148,11 @@ defmodule Recase.Generic do
       do_split(rest, {curr <> <<char::utf8>>, acc})
     end
   end
+
+  Enum.each(?A..?Z, fn char ->
+    defp upcase_streak(<<unquote(char), rest::binary>>, curr),
+      do: upcase_streak(rest, curr <> <<unquote(char)::utf8>>)
+  end)
+
+  defp upcase_streak(rest, upcase_streak), do: {upcase_streak, rest}
 end
