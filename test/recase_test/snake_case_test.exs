@@ -33,6 +33,12 @@ defmodule Recase.SnakeCaseTest do
     assert convert("") == ""
   end
 
+  test "should handle all upcase strings" do
+    assert convert("CREATE_D") == "create_d"
+    assert convert("CREATE_DT") == "create_dt"
+    assert convert("CREATE_DATE") == "create_date"
+  end
+
   test "should snake case atoms" do
     assert convert(:snakeCase) == :snake_case
     assert convert(:Snake_Case) == :snake_case

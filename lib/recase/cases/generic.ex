@@ -71,7 +71,7 @@ defmodule Recase.Generic do
       end
 
     input
-    |> do_split()
+    |> split()
     |> Enum.map_join(Keyword.get(opts, :separator, ?_), mapper)
   end
 
@@ -88,38 +88,60 @@ defmodule Recase.Generic do
 
   ##############################################################################
 
-  @spec do_split(input :: String.t(), {binary(), acc :: [String.t()]}) :: [
+  defp do_split(string) do
+    is_all_upcase = String.upcase(string) == string
+    acc = {"", []}
+    meta = %{is_all_upcase: is_all_upcase}
+
+    do_split_r(string, acc, meta)
+  end
+
+  @spec do_split_r(
+          input :: String.t(),
+          {binary(), acc :: [String.t()]},
+          meta :: %{is_all_upcase: boolean()}
+        ) :: [
           String.t()
         ]
-  defp do_split(string, acc \\ {"", []})
+  defp do_split_r(string, acc, meta)
 
-  defp do_split("", {"", acc}), do: Enum.reverse(acc)
+  defp do_split_r("", {"", acc}, _meta), do: Enum.reverse(acc)
 
-  defp do_split("", {curr, acc}),
-    do: do_split("", {"", [curr | acc]})
+  defp do_split_r("", {curr, acc}, meta),
+    do: do_split_r("", {"", [curr | acc]}, meta)
 
   Enum.each(@delimiters, fn delim ->
-    defp do_split(<<unquote(delim)::utf8, rest::binary>>, {"", acc}),
-      do: do_split(rest, {"", acc})
+    defp do_split_r(<<unquote(delim)::utf8, rest::binary>>, {"", acc}, meta),
+      do: do_split_r(rest, {"", acc}, meta)
 
-    defp do_split(<<unquote(delim), rest::binary>>, {curr, acc}),
-      do: do_split(rest, {"", [curr | acc]})
+    defp do_split_r(<<unquote(delim), rest::binary>>, {curr, acc}, meta),
+      do: do_split_r(rest, {"", [curr | acc]}, meta)
   end)
 
   Enum.each(?A..?Z, fn char ->
-    defp do_split(<<unquote(char), _::binary>> = input, {"", acc}) do
+    defp do_split_r(
+           <<unquote(char), rest::binary>>,
+           {curr, acc},
+           %{
+             is_all_upcase: true
+           } = meta
+         ) do
+      do_split_r(rest, {curr <> <<unquote(char)::utf8>>, acc}, meta)
+    end
+
+    defp do_split_r(<<unquote(char), _::binary>> = input, {"", acc}, meta) do
       {upcase_streak, rest} = upcase_streak(input, "")
 
       case byte_size(upcase_streak) do
         1 ->
-          do_split(rest, {<<unquote(char)::utf8>>, acc})
+          do_split_r(rest, {<<unquote(char)::utf8>>, acc}, meta)
 
         2 ->
           <<c1::utf8, c2::utf8>> = upcase_streak
-          do_split(rest, {<<c2::utf8>>, [<<c1::utf8>> | acc]})
+          do_split_r(rest, {<<c2::utf8>>, [<<c1::utf8>> | acc]}, meta)
 
         _ ->
-          do_split(rest, {<<upcase_streak::binary>>, acc})
+          do_split_r(rest, {<<upcase_streak::binary>>, acc}, meta)
       end
     end
   end)
@@ -129,23 +151,23 @@ defmodule Recase.Generic do
   |> Enum.reduce(&Kernel.++/2)
   |> Kernel.--(@delimiters)
   |> Enum.each(fn char ->
-    defp do_split(<<unquote(char)::utf8, rest::binary>>, {"", acc}),
-      do: do_split(rest, {<<unquote(char)::utf8>>, acc})
+    defp do_split_r(<<unquote(char)::utf8, rest::binary>>, {"", acc}, meta),
+      do: do_split_r(rest, {<<unquote(char)::utf8>>, acc}, meta)
 
-    defp do_split(<<unquote(char), rest::binary>>, {curr, acc}),
-      do: do_split(rest, {curr <> <<unquote(char)::utf8>>, acc})
+    defp do_split_r(<<unquote(char), rest::binary>>, {curr, acc}, meta),
+      do: do_split_r(rest, {curr <> <<unquote(char)::utf8>>, acc}, meta)
   end)
 
-  defp do_split(<<char::utf8, rest::binary>>, {"", acc}),
-    do: do_split(rest, {<<char::utf8>>, acc})
+  defp do_split_r(<<char::utf8, rest::binary>>, {"", acc}, meta),
+    do: do_split_r(rest, {<<char::utf8>>, acc}, meta)
 
   @upcase ~r/(?<!\p{Lu})\p{Lu}/u
 
-  defp do_split(<<char::utf8, rest::binary>>, {curr, acc}) do
+  defp do_split_r(<<char::utf8, rest::binary>>, {curr, acc}, meta) do
     if Regex.match?(@upcase, <<char::utf8>>) do
-      do_split(rest, {<<char::utf8>>, [curr | acc]})
+      do_split_r(rest, {<<char::utf8>>, [curr | acc]}, meta)
     else
-      do_split(rest, {curr <> <<char::utf8>>, acc})
+      do_split_r(rest, {curr <> <<char::utf8>>, acc}, meta)
     end
   end
 
