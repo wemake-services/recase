@@ -18,12 +18,6 @@ jobs:
         elixir: ['1.13', '1.14']
         otp: ['23', '24', '25']
         include:
-          - elixir: '1.7'
-            otp: '20'
-          - elixir: '1.8'
-            otp: '21'
-          - elixir: '1.9'
-            otp: '21'
           - elixir: '1.10'
             otp: '22'
           - elixir: '1.11'
