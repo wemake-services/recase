@@ -4,8 +4,7 @@ defmodule Recase.Generic do
   This module should not be used directly.
   """
 
-  # credo:disable-for-next-line /\.ApplicationConfigInModuleAttribute/
-  @splitters Application.get_env(:recase, :delimiters, [
+  @splitters Application.compile_env(:recase, :delimiters, [
                ?\s,
                ?\n,
                ?\t,
