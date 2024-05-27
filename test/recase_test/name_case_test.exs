@@ -39,6 +39,7 @@ defmodule Recase.NameCaseTest do
     assert convert("dato e iradier") == "Dato e Iradier"
     assert convert("mas i gavarró") == "Mas i Gavarró"
     assert convert("parson's") == "Parson's"
+    assert convert("díaz") == "Díaz"
 
     # Mac expectations
     assert convert("machin") == "Machin"
