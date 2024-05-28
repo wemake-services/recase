@@ -18,38 +18,38 @@ defmodule Recase.NameCase do
   def convert(value) when is_binary(value) do
     value
     |> String.downcase()
-    |> replace(~r|\b\w|, fn first_char_of_word ->
+    |> replace(~r|\b\w|u, fn first_char_of_word ->
       String.upcase(first_char_of_word)
     end)
-    |> replace(~r|\'\w\b|, fn apostophe_ess ->
+    |> replace(~r|\'\w\b|u, fn apostophe_ess ->
       String.downcase(apostophe_ess)
     end)
     |> replace_irish()
-    |> replace(~r|\bVon\b|, "von")
-    |> replace(~r|\bVan(?=\s+\w)|, "van")
-    |> replace(~r|\bAp\b|, "ap")
-    |> replace(~r|\bAl(?=\s+\w)|, "al")
-    |> replace(~r|\bEl\b|, "el")
-    |> replace(~r|\bLa\b|, "la")
-    |> replace(~r|\bBen(?=\s+\w)|, "ben")
-    |> replace(~r/\b(Bin|Binti|Binte)\b/, fn bin_prefix ->
+    |> replace(~r|\bVon\b|u, "von")
+    |> replace(~r|\bVan(?=\s+\w)|u, "van")
+    |> replace(~r|\bAp\b|u, "ap")
+    |> replace(~r|\bAl(?=\s+\w)|u, "al")
+    |> replace(~r|\bEl\b|u, "el")
+    |> replace(~r|\bLa\b|u, "la")
+    |> replace(~r|\bBen(?=\s+\w)|u, "ben")
+    |> replace(~r/\b(Bin|Binti|Binte)\b/u, fn bin_prefix ->
       String.downcase(bin_prefix)
     end)
-    |> replace(~r|\bD([aeiou])\b|, fn da_prefix ->
+    |> replace(~r|\bD([aeiou])\b|u, fn da_prefix ->
       String.downcase(da_prefix)
     end)
-    |> replace(~r|\bD([ao]s)\b|, fn das_prefix ->
+    |> replace(~r|\bD([ao]s)\b|u, fn das_prefix ->
       String.downcase(das_prefix)
     end)
-    |> replace(~r|\bDell([ae])\b|, fn dell_prefix ->
+    |> replace(~r|\bDell([ae])\b|u, fn dell_prefix ->
       String.downcase(dell_prefix)
     end)
-    |> replace(~r|\bDe([lr])\b|, fn del_prefix ->
+    |> replace(~r|\bDe([lr])\b|u, fn del_prefix ->
       String.downcase(del_prefix)
     end)
-    |> replace(~r|\bL([eo])\b|, fn le_prefix -> String.downcase(le_prefix) end)
+    |> replace(~r|\bL([eo])\b|u, fn le_prefix -> String.downcase(le_prefix) end)
     |> replace_roman_numerals()
-    |> replace(~r|\b([YEI])\b|, fn conjunction ->
+    |> replace(~r|\b([YEI])\b|u, fn conjunction ->
       String.downcase(conjunction)
     end)
   end
@@ -57,34 +57,34 @@ defmodule Recase.NameCase do
   defp replace_roman_numerals(string) do
     replace(
       string,
-      ~r/\b ( (?: [Xx]{1,3} | [Xx][Ll]   | [Ll][Xx]{0,3} )? (?: [Ii]{1,3} | [Ii][VvXx] | [Vv][Ii]{0,3} )? ) \b /x,
+      ~r/\b ( (?: [Xx]{1,3} | [Xx][Ll]   | [Ll][Xx]{0,3} )? (?: [Ii]{1,3} | [Ii][VvXx] | [Vv][Ii]{0,3} )? ) \b /xu,
       fn numeral -> String.upcase(numeral) end
     )
   end
 
   defp replace_irish(string) do
-    replace(string, ~r|\b(Mc)([A-Za-z]+)|, fn _, mc_prefix, rest_of_word ->
+    replace(string, ~r|\b(Mc)([A-Za-z]+)|u, fn _, mc_prefix, rest_of_word ->
       mc_prefix <> String.capitalize(rest_of_word)
     end)
     |> replace(
-      ~r|\b(Ma?c)([A-Za-z]{2,}[^aciozj])\b|,
+      ~r|\b(Ma?c)([A-Za-z]{2,}[^aciozj])\b|u,
       fn _, mc_prefix, rest_of_word ->
         mc_prefix <> String.capitalize(rest_of_word)
       end
     )
-    |> replace(~r/\bMacEdo/, "Macedo")
-    |> replace(~r/\bMacEvicius/, "Macevicius")
-    |> replace(~r/\bMacHado/, "Machado")
-    |> replace(~r/\bMacHar/, "Machar")
-    |> replace(~r/\bMacHin/, "Machin")
-    |> replace(~r/\bMacHlin/, "Machlin")
-    |> replace(~r/\bMacIas/, "Macias")
-    |> replace(~r/\bMacIulis/, "Maciulis")
-    |> replace(~r/\bMacKie/, "Mackie")
-    |> replace(~r/\bMacKle/, "Mackle")
-    |> replace(~r/\bMacKlin/, "Macklin")
-    |> replace(~r/\bMacKmin/, "Mackmin")
-    |> replace(~r/\bMacQuarie/, "Macquarie")
-    |> replace(~r/\bMacmurdo/, "MacMurdo")
+    |> replace(~r/\bMacEdo/u, "Macedo")
+    |> replace(~r/\bMacEvicius/u, "Macevicius")
+    |> replace(~r/\bMacHado/u, "Machado")
+    |> replace(~r/\bMacHar/u, "Machar")
+    |> replace(~r/\bMacHin/u, "Machin")
+    |> replace(~r/\bMacHlin/u, "Machlin")
+    |> replace(~r/\bMacIas/u, "Macias")
+    |> replace(~r/\bMacIulis/u, "Maciulis")
+    |> replace(~r/\bMacKie/u, "Mackie")
+    |> replace(~r/\bMacKle/u, "Mackle")
+    |> replace(~r/\bMacKlin/u, "Macklin")
+    |> replace(~r/\bMacKmin/u, "Mackmin")
+    |> replace(~r/\bMacQuarie/u, "Macquarie")
+    |> replace(~r/\bMacmurdo/u, "MacMurdo")
   end
 end
