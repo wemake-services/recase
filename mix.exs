@@ -1,7 +1,7 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.7.0"
+  @version "0.8.0"
   @url "https://github.com/wemake-services/recase"
 
   def project do
@@ -45,9 +45,10 @@ defmodule Recase.Mixfile do
 
   defp deps do
     [
-      {:excoveralls, "~> 0.13", only: :test},
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.18", only: :test},
+      {:castore, "~> 1.0", only: :test, runtime: false},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
 
       # Documentation:
       {:ex_doc, "~> 0.33.0", only: :dev, runtime: false}

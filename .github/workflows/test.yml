@@ -7,27 +7,27 @@ name: test
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
   build:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       MIX_ENV: test
     strategy:
+      fail-fast: false
       matrix:
-        elixir: ['1.13', '1.14']
-        otp: ['23', '24', '25']
-        include:
-          - elixir: '1.10'
-            otp: '22'
-          - elixir: '1.11'
-            otp: '23'
-          - elixir: '1.12'
-            otp: '24'
-    continue-on-error: false
+        elixir: ['1.14', '1.15', '1.16']
+        otp: ['25', '26']
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup elixir
       uses: erlef/setup-beam@v1
@@ -36,13 +36,13 @@ jobs:
         otp-version: ${{ matrix.otp }}
 
     - name: Get deps cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: deps/
         key: deps-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
 
     - name: Get build cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: _build/test/
         key: build-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
@@ -65,7 +65,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Retrieve PLT Cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: plt-cache
       with:
         path: priv/plts
