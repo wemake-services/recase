@@ -25,29 +25,31 @@ defmodule Recase.NameCase do
       String.downcase(apostophe_ess)
     end)
     |> replace_irish()
-    |> replace(~r|\bVon\b|u, "von")
+    |> replace(~r|\bVon(?=\s+\w)|u, "von")
     |> replace(~r|\bVan(?=\s+\w)|u, "van")
-    |> replace(~r|\bAp\b|u, "ap")
+    |> replace(~r|\bAp(?=\s+\w)|u, "ap")
     |> replace(~r|\bAl(?=\s+\w)|u, "al")
-    |> replace(~r|\bEl\b|u, "el")
-    |> replace(~r|\bLa\b|u, "la")
+    |> replace(~r|\bEl(?=\s+\w)|u, "el")
+    |> replace(~r|\bLa(?=\s+\w)|u, "la")
     |> replace(~r|\bBen(?=\s+\w)|u, "ben")
-    |> replace(~r/\b(Bin|Binti|Binte)\b/u, fn bin_prefix ->
+    |> replace(~r/\b(Bin|Binti|Binte)(?=\s+\w)/u, fn bin_prefix ->
       String.downcase(bin_prefix)
     end)
-    |> replace(~r|\bD([aeiou])\b|u, fn da_prefix ->
+    |> replace(~r|\bD([aeiou])(?=\s+\w)|u, fn da_prefix ->
       String.downcase(da_prefix)
     end)
-    |> replace(~r|\bD([ao]s)\b|u, fn das_prefix ->
+    |> replace(~r|\bD([ao]s)(?=\s+\w)|u, fn das_prefix ->
       String.downcase(das_prefix)
     end)
-    |> replace(~r|\bDell([ae])\b|u, fn dell_prefix ->
+    |> replace(~r|\bDell([ae])(?=\s+\w)|u, fn dell_prefix ->
       String.downcase(dell_prefix)
     end)
-    |> replace(~r|\bDe([lr])\b|u, fn del_prefix ->
+    |> replace(~r|\bDe([lr])(?=\s+\w)|u, fn del_prefix ->
       String.downcase(del_prefix)
     end)
-    |> replace(~r|\bL([eo])\b|u, fn le_prefix -> String.downcase(le_prefix) end)
+    |> replace(~r|\bL([eo])(?=\s+\w)|u, fn le_prefix ->
+      String.downcase(le_prefix)
+    end)
     |> replace_roman_numerals()
     |> replace(~r|\b([YEI])\b|u, fn conjunction ->
       String.downcase(conjunction)
