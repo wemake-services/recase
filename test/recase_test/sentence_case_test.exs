@@ -29,4 +29,12 @@ defmodule Recase.SentenceCaseTest do
   test "should return empty string" do
     assert convert("") == ""
   end
+
+  test "should return empty string when input is not binary" do
+    assert convert(100) == ""
+  end
+
+  test "should return empty string when input is nil" do
+    assert convert(nil) == ""
+  end
 end
