@@ -16,6 +16,8 @@ defmodule Recase.SnakeCaseTest do
     assert convert("--snake-case--") == "snake_case"
     assert convert("snake#case") == "snake_case"
     assert convert("snake?!case") == "snake_case"
+    assert convert("SnakeACase") == "snake_a_case"
+    assert convert("CurrencyISOCode") == "currency_i_s_o_code"
   end
 
   test "should return single letter" do
@@ -29,6 +31,12 @@ defmodule Recase.SnakeCaseTest do
 
   test "should return empty string" do
     assert convert("") == ""
+  end
+
+  test "should handle all upcase strings" do
+    assert convert("CREATE_D") == "create_d"
+    assert convert("CREATE_DT") == "create_dt"
+    assert convert("CREATE_DATE") == "create_date"
   end
 
   test "should snake case atoms" do
