@@ -23,8 +23,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        elixir: ['1.14', '1.15', '1.16']
-        otp: ['25', '26']
+        include:
+          - elixir: '1.18.4-otp-27'
+            otp: '28.0'
+          - elixir: '1.18'
+            otp: '27.3'
+          - elixir: '1.17'
+            otp: '27.0'
+          - elixir: '1.16'
+            otp: '26.2'
+          - elixir: '1.15'
+            otp: '25.3'
 
     steps:
     - uses: actions/checkout@v4
