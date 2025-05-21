@@ -135,13 +135,15 @@ defmodule Recase.Generic do
   defp do_split(<<char::utf8, rest::binary>>, {"", acc}),
     do: do_split(rest, {<<char::utf8>>, acc})
 
-  @upcase ~r/(?<!\p{Lu})\p{Lu}/u
-
   defp do_split(<<char::utf8, rest::binary>>, {curr, acc}) do
-    if Regex.match?(@upcase, <<char::utf8>>) do
+    if Regex.match?(upcase(), <<char::utf8>>) do
       do_split(rest, {<<char::utf8>>, [curr | acc]})
     else
       do_split(rest, {curr <> <<char::utf8>>, acc})
     end
+  end
+
+  defp upcase do
+    ~r/(?<!\p{Lu})\p{Lu}/u
   end
 end
