@@ -2,7 +2,7 @@
 
 ![Recase](https://raw.githubusercontent.com/wemake-services/recase/master/media/logo.png)
 
-[![Build Status](https://github.com/wemake-services/recase/workflows/test/badge.svg?branch=master&event=push)](https://github.com/wemake-services/recase/actions?query=workflow%3Atest)
+[![test](https://github.com/wemake-services/recase/actions/workflows/test.yml/badge.svg?branch=master&event=push)](https://github.com/wemake-services/recase/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/wemake-services/recase/badge.svg?branch=master)](https://coveralls.io/github/wemake-services/recase?branch=master)
 [![Hex Version](https://img.shields.io/hexpm/v/recase.svg)](https://hex.pm/packages/recase)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/recase/)
