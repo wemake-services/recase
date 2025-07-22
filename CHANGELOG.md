@@ -6,6 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## Version 0.9.0 (2025-07-22)
+
+### Features
+
+- Supports latest Elixir versions
+
+### Bugfixes
+
+- Avoids storing regexs on module level, #216
+
+### Misc
+
+- Updates multiple deps
+
+
 ## Version 0.8.1 (2024-06-25)
 
 ### Bugfixes
@@ -85,7 +100,7 @@ This version brings just one, but braking change. As it was discussed `to_upper`
 ### Braking changes
 
 - `UpperCase` renamed to `PascalCase` ([#2](https://github.com/wemake-services/recase/issues/2))
-- `Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/wemake-services/recase/issues/2))
+- `!Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/wemake-services/recase/issues/2))
 
 ### Tests
 
