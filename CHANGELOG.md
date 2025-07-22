@@ -100,7 +100,7 @@ This version brings just one, but braking change. As it was discussed `to_upper`
 ### Braking changes
 
 - `UpperCase` renamed to `PascalCase` ([#2](https://github.com/wemake-services/recase/issues/2))
-- `Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/wemake-services/recase/issues/2))
+- `!Recase.to_upper/1` renamed to `Recase.to_pascal/1` ([#2](https://github.com/wemake-services/recase/issues/2))
 
 ### Tests
 
