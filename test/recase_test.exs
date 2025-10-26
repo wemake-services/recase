@@ -4,10 +4,12 @@ defmodule RecaseTest do
 
   test "should convert to camelCase" do
     assert Recase.to_camel("some value") == "someValue"
+    assert Recase.to_camel(:some_value) == :someValue
   end
 
   test "should convert to snake_case" do
     assert Recase.to_snake("some value") == "some_value"
+    assert Recase.to_snake(:someValue) == :some_value
   end
 
   test "should convert to kebab-case" do
@@ -16,10 +18,12 @@ defmodule RecaseTest do
 
   test "should convert to PascalCase" do
     assert Recase.to_pascal("some value") == "SomeValue"
+    assert Recase.to_pascal(:someValue) == :SomeValue
   end
 
   test "should convert to CONSTANT_CASE" do
     assert Recase.to_constant("some value") == "SOME_VALUE"
+    assert Recase.to_constant(:someValue) == :SOME_VALUE
   end
 
   test "should convert to Path/Case" do

@@ -20,7 +20,7 @@ defmodule Recase do
   }
 
   @doc """
-  Converts string to PascalCase (aka UpperCase).
+  Converts string or atom to PascalCase (aka UpperCase).
 
   ## Examples
 
@@ -29,12 +29,16 @@ defmodule Recase do
 
       iex> Recase.to_pascal("some value")
       "SomeValue"
+
+      iex> Recase.to_pascal(:someValue)
+      :SomeValue
   """
   @spec to_pascal(String.t()) :: String.t()
+  @spec to_pascal(atom()) :: atom()
   def to_pascal(value), do: PascalCase.convert(value)
 
   @doc """
-  Converts string to camelCase.
+  Converts string or atom to camelCase.
 
   ## Examples
 
@@ -43,12 +47,16 @@ defmodule Recase do
 
       iex> Recase.to_camel("Some Value")
       "someValue"
+
+      iex> Recase.to_camel(:some_value)
+      :someValue
   """
   @spec to_camel(String.t()) :: String.t()
+  @spec to_camel(atom()) :: atom()
   def to_camel(value), do: CamelCase.convert(value)
 
   @doc """
-  Converts string to snake_case.
+  Converts string or atom to snake_case.
 
   ## Examples
 
@@ -57,8 +65,12 @@ defmodule Recase do
 
       iex> Recase.to_snake("someValue")
       "some_value"
+
+      iex> Recase.to_snake(:someValue)
+      :some_value
   """
   @spec to_snake(String.t()) :: String.t()
+  @spec to_snake(atom()) :: atom()
   def to_snake(value), do: SnakeCase.convert(value)
   defdelegate underscore(value), to: Recase, as: :to_snake
 
@@ -77,7 +89,7 @@ defmodule Recase do
   def to_kebab(value), do: KebabCase.convert(value)
 
   @doc """
-  Converts string to CONSTANT_CASE.
+  Converts string or atom to CONSTANT_CASE.
 
   ## Examples
 
@@ -86,8 +98,12 @@ defmodule Recase do
 
       iex> Recase.to_constant("some value")
       "SOME_VALUE"
+
+      iex> Recase.to_constant(:someValue)
+      :SOME_VALUE
   """
   @spec to_constant(String.t()) :: String.t()
+  @spec to_constant(atom()) :: atom()
   def to_constant(value), do: ConstantCase.convert(value)
 
   @doc ~S"""
