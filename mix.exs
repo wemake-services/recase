@@ -1,7 +1,7 @@
 defmodule Recase.Mixfile do
   use Mix.Project
 
-  @version "0.9.0"
+  @version "0.9.1"
   @url "https://github.com/wemake-services/recase"
 
   def project do
