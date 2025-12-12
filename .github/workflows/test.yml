@@ -45,13 +45,13 @@ jobs:
         otp-version: ${{ matrix.otp }}
 
     - name: Get deps cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: deps/
         key: deps-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
 
     - name: Get build cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: _build/test/
         key: build-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
@@ -74,7 +74,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Retrieve PLT Cache
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       id: plt-cache
       with:
         path: priv/plts
