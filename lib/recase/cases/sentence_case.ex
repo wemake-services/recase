@@ -23,4 +23,6 @@ defmodule Recase.SentenceCase do
            rejoin(value, separator: @sep, case: :down),
          do: String.upcase(<<char::utf8>>) <> rest
   end
+
+  def convert(_value), do: ""
 end
