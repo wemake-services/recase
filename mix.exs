@@ -70,7 +70,7 @@ defmodule Recase.Mixfile do
       main: "readme",
       source_url: @url,
       source_ref: @version,
-      formatters: ["html"]
+      formatters: ["html", "markdown"]
     ]
   end
 
